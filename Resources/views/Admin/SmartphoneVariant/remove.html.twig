@@ -1,0 +1,6 @@
+{% extends "EkynaAdminBundle:Entity/Default:remove.html.twig" %}
+
+{% block actions %}
+{{ ui_button('ekyna_core.button.back', {'type': 'link', 'path': path('ekyna_demo_smartphone_admin_show', identifiers)}) }}
+{{ admin_resource_btn(smartphoneVariant, 'new') }}
+{% endblock %}

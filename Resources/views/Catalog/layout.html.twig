@@ -1,0 +1,26 @@
+{% extends 'EkynaDemoBundle::base.html.twig' %}
+
+{% block stylesheets -%}
+    {{ parent() }}
+    {% stylesheets output='css/catalog.css' filter='cssrewrite, ?yui_css'
+        '@EkynaDemoBundle/Resources/asset/css/catalog.css'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {%- endstylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                {% block content_left %}{% endblock content_left %}
+            </div>
+            <div class="col-md-3">
+                {% block content_right %}
+                {# TODO knp_menu #}
+                {{ render(controller('EkynaDemoBundle:Catalog:sideMenu')) }}
+                {% endblock content_right %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

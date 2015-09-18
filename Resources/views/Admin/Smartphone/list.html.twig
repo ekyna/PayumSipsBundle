@@ -1,0 +1,13 @@
+{% extends "EkynaAdminBundle:Entity:layout.html.twig" %}
+
+{% block title %}
+<h1>{{ 'ekyna_demo.smartphone.header.list'|trans|raw }}</h1>
+{% endblock %}
+
+{% block actions %}
+{{ admin_resource_btn('ekyna_demo.smartphone', 'new') }}
+{% endblock %}
+
+{% block main %}
+{{ ekyna_table_render(smartphones) }}
+{% endblock %}

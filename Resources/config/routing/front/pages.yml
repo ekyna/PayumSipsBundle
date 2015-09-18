@@ -1,0 +1,62 @@
+home:
+    pattern: /
+    defaults:
+        _controller: EkynaDemoBundle:Page:home
+    requirements:
+        _method: GET
+    options:
+        _cms:
+            name: Accueil
+            menus: [footer]
+
+about:
+    pattern: /a-propos
+    defaults:
+        _controller: EkynaDemoBundle:Page:default
+    requirements:
+        _method: GET
+    options:
+        _cms:
+            name: À propos
+            menus: [main, footer]
+            locked: false
+            advanced: true
+
+case_studies:
+    path: /a-propos/etude-de-cas
+    defaults:
+        _controller: EkynaDemoBundle:Page:default
+    requirements:
+        _method: GET
+    options:
+        _cms:
+            name: Étude de cas
+            parent: about
+            menus: [main:about]
+            locked: false
+            advanced: true
+
+expertise:
+    path: /a-propos/expertise
+    defaults:
+        _controller: EkynaDemoBundle:Page:default
+    requirements:
+        _method: GET
+    options:
+        _cms:
+            name: Expertise
+            parent: about
+            menus: [main:about]
+            locked: false
+            advanced: true
+
+contact:
+    pattern: /contact
+    defaults:
+        _controller: EkynaDemoBundle:Page:contact
+    requirements:
+        _method: GET|POST
+    options:
+        _cms:
+            name: Contact
+            menus: [main, footer]

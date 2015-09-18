@@ -1,0 +1,63 @@
+ekyna_demo_smartphone_admin_home:
+    path: /
+    defaults: { _controller: "ekyna_demo.smartphone.controller:homeAction" }
+    requirements:
+        _method: GET
+
+ekyna_demo_smartphone_admin_list:
+    path: /list
+    defaults: { _controller: "ekyna_demo.smartphone.controller:listAction" }
+    requirements:
+        _method: GET|POST
+
+ekyna_demo_smartphone_admin_new:
+    path: /new
+    defaults: { _controller: "ekyna_demo.smartphone.controller:newAction" }
+    requirements:
+        _method: GET|POST
+
+ekyna_demo_smartphone_admin_show:
+    path: /{smartphoneId}/show
+    defaults: { _controller: "ekyna_demo.smartphone.controller:showAction" }
+    requirements:
+        _method: GET
+        smartphoneId:  \d+
+
+ekyna_demo_smartphone_admin_edit:
+    path: /{smartphoneId}/edit
+    defaults: { _controller: "ekyna_demo.smartphone.controller:editAction" }
+    requirements:
+        _method: GET|POST
+        smartphoneId:  \d+
+
+ekyna_demo_smartphone_admin_tinymce:
+    path: /{smartphoneId}/tinymce
+    defaults: { _controller: "ekyna_demo.smartphone.controller:tinymceAction", field: html }
+    requirements:
+        _method: GET
+        smartphoneId:  \d+
+
+#ekyna_demo_smartphone_admin_content:
+#    path: /{smartphoneId}/content
+#    defaults: { _controller: "ekyna_demo.smartphone.controller:contentShowAction" }
+#    requirements:
+#        _method: GET
+#        smartphoneId:  \d+
+#
+#ekyna_demo_smartphone_admin_content_edit:
+#    path: /{smartphoneId}/content/edit
+#    defaults: { _controller: "ekyna_demo.smartphone.controller:contentEditAction" }
+#    requirements:
+#        _method: GET|POST
+#        smartphoneId:  \d+
+
+ekyna_demo_smartphone_admin_remove:
+    path: /{smartphoneId}/remove
+    defaults: { _controller: "ekyna_demo.smartphone.controller:removeAction" }
+    requirements:
+        _method: GET|POST
+        smartphoneId:  \d+
+
+ekyna_demo_smartphoneVariant_admin:
+    resource: "smartphoneVariant.yml"
+    prefix:   /{smartphoneId}/variants

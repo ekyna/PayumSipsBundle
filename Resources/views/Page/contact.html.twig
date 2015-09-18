@@ -1,0 +1,24 @@
+{% extends "EkynaDemoBundle:Page:default.html.twig" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                {{ cms_title() }}
+                {{ cms_content() }}
+            </div>
+            <div class="col-md-6">
+                <form action="{{ path('contact') }}" {{ form_enctype(form) }} method="post" class="form-horizontal">
+                    {{ bootstrap_set_style('horizontal') }}
+                    {{ bootstrap_set_col_size('md') }}
+                    <div class="form-body">
+                        {{ form_row(form.email, {'label_col': 4, 'widget_col': 8}) }}
+                        {{ form_row(form.subject, {'label_col': 4, 'widget_col': 8}) }}
+                        {{ form_row(form.message, {'label_col': 4, 'widget_col': 8}) }}
+                        {{ form_rest(form) }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

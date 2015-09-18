@@ -1,0 +1,12 @@
+{% extends "EkynaDemoBundle::base.html.twig" %}
+
+{% block metas %}
+{{ cms_metas() }}
+{% endblock metas %}
+
+{% block content %}
+    <div class="container">
+        {{ cms_title() }}
+        {{ cms_content() }}
+    </div>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "EkynaAdminBundle:Entity/Default:new.html.twig" %}
+
+{% block actions %}
+{{ ui_button('ekyna_core.button.back', {'type': 'link', 'path': path('ekyna_demo_smartphone_admin_show', identifiers)}) }}
+{% endblock %}
+
+{% block stylesheets -%}
+    {{ parent() }}
+    {% stylesheets output='css/characteristics.css' filter='cssrewrite, yui_css' debug=false
+    '@EkynaCharacteristicsBundle/Resources/public/css/characteristics.css'
+    %}
+    <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {%- endstylesheets %}
+{% endblock stylesheets %}

@@ -1,0 +1,19 @@
+<ul class="nav nav-tabs">
+    {#<li class="active"><a href="#prod-product-general" data-toggle="tab">{{ 'ekyna_core.field.general'|trans }}</a></li>#}
+    <li class="active"><a href="#prod-product-characteristics" data-toggle="tab">{{ 'ekyna_characteristics.menu'|trans }}</a></li>
+</ul>
+<div class="panel-body form-body">
+    {{ bootstrap_set_style('horizontal') }}
+    {{ bootstrap_set_col_size('md') }}
+    {{ form_errors(form) }}
+    <div class="tab-content">
+        {#<div class="tab-pane active" id="prod-product-general">
+            {{ form_row(form.name) }}
+        </div>#}
+        <div class="tab-pane active" id="prod-product-characteristics">
+            {% form_theme form.characteristics "@characteristics/Form/form_div_layout.html.twig" %}
+            {{ form_row(form.characteristics) }}
+        </div>
+    </div>
+    {{ form_rest(form) }}
+</div>

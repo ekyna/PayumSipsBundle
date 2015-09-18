@@ -1,0 +1,15 @@
+{% extends "EkynaDemoBundle::base.html.twig" %}
+
+{% block metas %}
+{{ cms_metas() }}
+{% endblock metas %}
+
+{% block body %}
+    {% include 'EkynaDemoBundle:Fragment:navbar.html.twig' %}
+
+    <div class="container">
+        {% block content %}{% endblock content %}
+    </div>
+
+    {{ render_esi(controller('EkynaDemoBundle:Fragment:footer', {'locale': app.request.locale})) }}
+{% endblock body %}

@@ -1,0 +1,11 @@
+ekyna_demo_pages:
+    resource: "front/pages.yml"
+    prefix:   /
+
+ekyna_demo_catalog:
+    resource: "front/catalog.yml"
+    prefix:   /catalog
+
+ekyna_demo_test:
+    resource: "front/test.yml"
+    prefix:   /test

@@ -1,0 +1,7 @@
+about: /a-propos
+case_studies: /a-propos/etude-de-cas
+expertise: /a-propos/expertise
+
+ekyna_demo_catalog_index: /catalogue
+ekyna_demo_catalog_category: /catalogue/{categorySlug}
+ekyna_demo_catalog_product: /catalogue/{categorySlug}/{productSlug}.html
