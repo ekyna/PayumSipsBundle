@@ -1,0 +1,19 @@
+<html>
+<body>
+    <p>
+        {{ message }}<br>
+        {{ date|localizeddate }}
+    </p>
+    <hr>
+    {{ render_esi(controller('EkynaDemoBundle:Test:partOne')) }}
+    <hr>
+    {{ render_esi(controller('EkynaDemoBundle:Test:partTwo')) }}
+    <hr>
+    {{ render_esi(controller('EkynaDemoBundle:Test:partThree')) }}
+    <hr>
+    <p>
+        <a href="{{ path('test_home') }}">Reload</a> <br>
+        <a href="{{ path('test_purge') }}">Purge</a>
+    </p>
+</body>
+</html>

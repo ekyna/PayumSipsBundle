@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping
+    xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Ekyna\Bundle\DemoBundle\Entity\Category">
+        <property name="media">
+            <constraint name="Valid" />
+            <constraint name="Ekyna\Bundle\MediaBundle\Validator\Constraints\MediaChoice">
+                <option name="types">image</option>
+            </constraint>
+        </property>
+        <property name="color">
+            <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
+        </property>
+        <property name="html">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\DemoBundle\Entity\Smartphone">
+        <!--<property name="gallery">
+            <constraint name="Valid" />
+        </property>-->
+    </class>
+
+    <class name="Ekyna\Bundle\DemoBundle\Entity\Brand">
+        <property name="image">
+            <constraint name="Valid" />
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\DemoBundle\Entity\BrandImage">
+        <property name="file">
+            <constraint name="Image" />
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\DemoBundle\Entity\Store">
+        <property name="name">
+            <constraint name="NotBlank" />
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">255</option>
+            </constraint>
+        </property>
+        <!--<property name="latitude">
+            <constraint name="NotNull" />
+            <constraint name="Range">
+                <option name="min">-90</option>
+                <option name="max">90</option>
+            </constraint>
+        </property>
+        <property name="longitude">
+            <constraint name="NotNull" />
+            <constraint name="Range">
+                <option name="min">-180</option>
+                <option name="max">180</option>
+            </constraint>
+        </property>-->
+    </class>
+
+</constraint-mapping>

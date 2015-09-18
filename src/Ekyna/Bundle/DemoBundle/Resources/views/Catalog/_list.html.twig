@@ -1,0 +1,36 @@
+<div class="pagerfanta">
+    {{ pagerfanta(products, 'twitter_bootstrap3') }}
+</div>
+{% for product in products %}
+{% spaceless %}
+{% set product_path = path('ekyna_demo_catalog_product', {'categorySlug': product.category.slug, 'productSlug': product.slug}) %}
+<div class="product-thumb">
+	<div class="row">
+	    <div class="col-sm-3">
+	        <a class="thumbnail" href="{{ product_path }}">
+		        {% if product.images|length > 0 %}
+		        {% set thumb = product.images[0] %}
+				<img alt="{{ thumb.media.title }}" height="142" src="{{ thumb.media.path|imagine_filter('product_thumb') }}" width="190" />
+		        {% else %}
+			    <img alt="Visuel à venir" height="142" src="http://placehold.it/190x142/f7f7f7/6e829b&text=Visuel+à+venir" width="190" />
+		        {% endif %}
+	        </a>
+	    </div>
+	    <div class="col-sm-9">
+	        <ul class="product-thumb-actions">
+	            <li class="product-thumb-price">{{ product.price }}</li>
+	            <li><a href="#" class="btn btn-sm btn-primary">Ajouter au panier</a></li>
+	            <li><a href="{{ product_path }}" class="btn btn-sm btn-default">En savoir plus</a></li>
+	        </ul>
+	        <h2 class="product-thumb-title"><a href="{{ product_path }}">{{ product.designation }}</a></h2>
+	        <div class="product-thumb-description">
+	            {{ product.html|truncate_html(150)|raw }}
+	        </div>
+	    </div>
+	</div>
+</div>
+{% endspaceless %}
+{% endfor %}
+<div class="pagerfanta">
+    {{ pagerfanta(products, 'twitter_bootstrap3') }}
+</div>

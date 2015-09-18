@@ -1,0 +1,7 @@
+ekyna_demo_front:
+    resource: "routing/front.yml"
+    prefix:   /
+
+ekyna_demo_admin:
+    resource: "routing/admin.yml"
+    prefix:   /admin/catalog

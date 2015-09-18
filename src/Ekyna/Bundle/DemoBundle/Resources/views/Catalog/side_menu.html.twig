@@ -1,0 +1,5 @@
+<ul>
+    {% for category in categories %}
+    <li><a href="{{ path('ekyna_demo_catalog_category', {'categorySlug': category.slug}) }}">{{ category }}</a></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,10 @@
+{% extends 'EkynaDemoBundle:Catalog:layout.html.twig' %}
+
+{% block metas %}
+    {{ cms_metas() }}
+{% endblock metas %}
+
+{% block content_left %}
+{{ cms_title() }}
+{{ cms_content() }}
+{% endblock content_left %}

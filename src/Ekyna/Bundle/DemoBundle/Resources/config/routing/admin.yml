@@ -1,0 +1,15 @@
+ekyna_demo_category_admin:
+    resource: "admin/category.yml"
+    prefix:   /categories
+
+ekyna_demo_smartphone_admin:
+    resource: "admin/smartphone.yml"
+    prefix:   /smartphones
+
+ekyna_demo_brand_admin:
+    resource: "admin/brand.yml"
+    prefix:   /brands
+
+ekyna_demo_store_admin:
+    resource: "admin/store.yml"
+    prefix:   /stores

@@ -1,0 +1,63 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" data-fos-routes="{{ path('fos_js_routing_js', {'_format': 'json'}) }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    {% block metas %}{% endblock metas %}
+
+    {{ ui_google_font() }}
+
+    {% block stylesheets -%}
+        {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
+            'css/content.css'
+            'css/fontawesome.css'
+            'css/form.css'
+            '@EkynaSocialButtonsBundle/Resources/public/css/share.css'
+            '@EkynaDemoBundle/Resources/asset/css/main.css'
+        %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+        {% endstylesheets %}
+    {%- endblock stylesheets %}
+
+    {% include 'EkynaCoreBundle:Ui:ie-fix.html.twig' %}
+
+    {{ require_js(not app.debug) }}
+</head>
+<body>
+{% block body %}
+
+    {% include 'EkynaDemoBundle:Fragment:navbar.html.twig' %}
+
+    {% block breadcrumb -%}
+    <div class="container">
+        {{ cms_flashes() }}
+        {{ cms_breadcrumb() }}
+    </div>
+    {%- endblock breadcrumb %}
+
+    {% block content %}{% endblock content %}
+
+    <div class="container" id="footer">
+        {{ render_esi(controller('EkynaDemoBundle:Fragment:footer', {'locale': app.request.locale})) }}
+        <div>
+            {{ ui_locale_switcher() }}
+        </div>
+    </div>
+
+{% endblock body %}
+
+{% block javascripts -%}
+<script type="text/javascript">require(['bundles/ekynademo/js/main']);</script>
+{%- endblock javascripts %}
+
+{% block tracking -%}
+    {{ ekyna_google_tracking() }}
+{%- endblock tracking %}
+
+</body>
+</html>
+{% endspaceless %}

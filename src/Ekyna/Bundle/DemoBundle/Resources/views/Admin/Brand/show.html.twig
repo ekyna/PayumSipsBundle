@@ -1,0 +1,43 @@
+{% extends "EkynaAdminBundle:Entity:sided.html.twig" %}
+
+{% block title %}
+<h1>{{ 'ekyna_demo.brand.header.show'|trans({'%name%': brand.title})|raw }}</h1>
+{% endblock %}
+
+{% block actions %}
+{{ admin_resource_btn(brand, 'list') }}
+{{ admin_resource_btn(brand, 'new') }}
+{% endblock %}
+
+{% block main %}
+<div class="actions">
+    {{ admin_resource_btn(brand, 'edit') }}
+    {{ admin_resource_btn(brand, 'remove') }}
+</div>
+<div class="show show-with-tabs">
+    <ul class="nav nav-tabs">
+	    <li class="active"><a href="#prod-brand-general" data-toggle="tab">{{ 'ekyna_core.field.general'|trans }}</a></li>
+        <li><a href="#prod-brand-seo" data-toggle="tab">{{ 'ekyna_core.field.seo'|trans }}</a></li>
+	</ul>
+	<div class="show-body">
+	    <div class="tab-content">
+		    <div class="tab-pane active" id="prod-brand-general">
+		      {{ show_row(brand.title, null, 'ekyna_core.field.title') }}
+		      {{ show_row(brand.image, 'upload', 'ekyna_core.field.image') }}
+		    </div>
+            <div class="tab-pane" id="prod-brand-seo">
+                {{ show_row(brand.seo.title, 'text', 'ekyna_core.field.title') }}
+                {{ show_row(brand.seo.description, 'text', 'ekyna_core.field.description') }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ show_row(brand.seo.changefreq, 'text', 'ekyna_core.field.changefreq', {'label_nb_col': 4}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ show_row(brand.seo.priority, 'text', 'ekyna_core.field.priority', {'label_nb_col': 4}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}

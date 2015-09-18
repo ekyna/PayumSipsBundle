@@ -1,0 +1,7 @@
+about: /about
+case_studies: /about/case-studies
+expertise: /about/expertise
+
+ekyna_demo_catalog_index: /catalog
+ekyna_demo_catalog_category: /catalog/{categorySlug}
+ekyna_demo_catalog_product: /catalog/{categorySlug}/{productSlug}.html
