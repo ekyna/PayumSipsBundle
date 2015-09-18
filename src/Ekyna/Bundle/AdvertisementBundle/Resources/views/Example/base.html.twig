@@ -1,0 +1,6 @@
+{% extends "EkynaCmsBundle::base.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">require(['bundles/ekynaadvertisement/js/advert']);</script>
+{% endblock javascripts %}
