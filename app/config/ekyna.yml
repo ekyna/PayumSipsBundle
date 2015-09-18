@@ -1,0 +1,114 @@
+#ekyna_admin:
+#    resources:
+#        ekyna_cms:
+#            tag:
+#                entity: Ekyna\Bundle\CmsBundle\Entity\Tag
+#                form: Ekyna\Bundle\CmsBundle\Form\Type\TagType
+#                table: Ekyna\Bundle\CmsBundle\Table\Type\TagType
+#    menus:
+#        content:
+#            label: ekyna_core.field.content
+#            icon: file
+#            position: 97
+#            entries:
+#                tag:
+#                    route: ekyna_cms_tag_admin_home
+#                    label: ekyna_cms.tag.label.plural
+#                    resource: ekyna_cms.tag
+
+ekyna_user:
+    templates:
+        base: 'EkynaDemoBundle::account.html.twig'
+        email: 'EkynaDemoBundle:Email:base.html.twig'
+    account:
+        enable: true
+        username: false
+        register: true
+        resetting: true
+        profile: true
+        address: true
+    notification:
+        admin_login: false
+#    pools:
+#        user:
+#            entity: Acme\TestBundle\Entity\Member
+
+ekyna_cart:
+    templates:
+        base: 'EkynaDemoBundle::base.html.twig'
+        email: 'EkynaDemoBundle:Email:base.html.twig'
+
+ekyna_cms:
+    home_route: home
+    seo:
+        no_follow: true
+        no_index: true
+        title_append: " - sf.dev"
+    page:
+        controllers:
+            default:
+                title: Par défault
+                value: "EkynaDemoBundle:Page:default"
+    menu:
+        roots:
+            main:
+                title: Menu principal
+                description: Barre de navigation principale du site.
+            footer:
+                title: Menu pied de page
+                description: Liste de liens dans le pied de page.
+    cookie_consent:
+        enable: true
+        controller: "EkynaDemoBundle:Page:default"
+
+ekyna_core:
+    cache:
+        default_smaxage: 3600
+        tag:
+            secret: %secret%
+            encode: true
+    ui:
+        google_font_url: "http://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700"
+        tinymce_formats:
+            0:
+                title: "Test"
+                items:
+                    - {title: "Blue", selector : 'span,em,strong,p,h1,h2,h3,h4,h5,h6', inline: "span", styles: {color: "blue"}}
+    assets:
+        content_css:
+            inputs:
+                - "@bootstrap_css"
+                - "@EkynaDemoBundle/Resources/asset/css/content.css"
+        bootstrap_css:
+            inputs:
+                - "@EkynaDemoBundle/Resources/asset/less/bootstrap.less"
+                - "%kernel.root_dir%/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/less/form.less"
+
+ekyna_product:
+    options:
+        subscription:
+            label: "ekyna_demo.subscription.singular"
+            class: Ekyna\Bundle\DemoBundle\Entity\Subscription
+            form_type: ekyna_demo_subscription
+    products:
+        smartphone:
+            label: "ekyna_demo.smartphone.singular"
+            class: Ekyna\Bundle\DemoBundle\Entity\Smartphone
+            options: [subscription]
+
+ekyna_characteristics:
+    classes:
+        product: Ekyna\Bundle\DemoBundle\Entity\SmartphoneCharacteristics
+        variant: Ekyna\Bundle\DemoBundle\Entity\SmartphoneVariantCharacteristics
+
+ekyna_setting:
+    helper_remotes:
+        - "http://sf.vm.dev/app_dev.php/api/setting/helper/fetch"
+
+ekyna_google:
+    client:
+        application_name: Test project
+        developer_key: AIzaSyBQXhYai0pkg-ZhaBmP36372n1GZSw4qfo
+        client_id: ""
+        client_secret: ""
+        redirect_uri: ""

@@ -1,0 +1,38 @@
+ekyna_blog_example:
+    resource: "@EkynaBlogBundle/Resources/config/routing/example.yml"
+    prefix:   /example/blog
+
+ekyna_survey_example:
+    resource: "@EkynaSurveyBundle/Resources/config/routing/example.yml"
+    prefix:   /example/survey
+
+ekyna_agenda_example:
+    resource: "@EkynaAgendaBundle/Resources/config/routing/example.yml"
+    prefix:   /example/agenda
+
+ekyna_news_example:
+    resource: "@EkynaNewsBundle/Resources/config/routing/example.yml"
+    prefix:   /example/news
+
+ekyna_advertisement_example:
+    resource: "@EkynaAdvertisementBundle/Resources/config/routing/example.yml"
+    prefix:   /example/advertisement
+
+ekyna_payment_test:
+    resource: "@EkynaPaymentBundle/Resources/config/routing/test.yml"
+    prefix:   /test/payment
+
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+_profiler:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /_profiler
+
+_configurator:
+    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
+    prefix:   /_configurator
+
+_main:
+    resource: routing.yml

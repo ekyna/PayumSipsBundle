@@ -1,0 +1,39 @@
+imports:
+    - { resource: config_dev.yml }
+
+parameters:
+    locale:  en
+    locales: [en, fr]
+    kernel.var_dir: %kernel.root_dir%/../var/test
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+doctrine:
+    dbal:
+        dbname: "%database_name%_test"
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+                cache_prefix: cache/test
+        local_upload:
+            web_path:
+                cache_prefix: cache/test/upload
+
+fos_elastica:
+    indexes:
+        search:
+            index_name: %hostname%_test

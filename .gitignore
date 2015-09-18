@@ -1,0 +1,17 @@
+/web/assets/
+/web/bundles/
+/web/css/
+/web/fonts/
+/web/js/
+/web/cache/
+/app/bootstrap.php.cache
+/app/cache/*
+/app/config/parameters.yml
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/var/*
+!var/.gitkeep
+/vendor/
+/bin/
+/subtree.sh
