@@ -1,0 +1,7 @@
+config:
+    shim:
+        'fullcalendar':
+            deps: ['jquery', 'moment']
+
+    paths:
+        'fullcalendar': 'js/fullcalendar'

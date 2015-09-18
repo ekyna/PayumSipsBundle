@@ -1,0 +1,7 @@
+ekyna_agenda_api_load_events:
+    path: /load-events
+    defaults: { _controller: EkynaAgendaBundle:Api:loadEvents }
+    requirements:
+        _method: GET|POST
+    options:
+        expose: true
