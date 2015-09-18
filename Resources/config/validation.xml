@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping
+        xmlns="http://symfony.com/schema/dic/constraint-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                            http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Ekyna\Bundle\AgendaBundle\Entity\Event">
+        <property name="translations">
+            <constraint name="Valid" />
+        </property>
+        <property name="startDate">
+            <constraint name="NotNull" />
+            <constraint name="DateTime" />
+        </property>
+        <property name="endDate">
+            <constraint name="NotNull" />
+            <constraint name="DateTime" />
+        </property>
+        <constraint name="Ekyna\Bundle\AgendaBundle\Validator\Constraints\Event" />
+    </class>
+
+    <class name="Ekyna\Bundle\AgendaBundle\Entity\EventTranslation">
+        <property name="title">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="content">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+
+
+</constraint-mapping>

@@ -1,0 +1,7 @@
+ekyna_agenda_admin:
+    resource: "routing/admin.yml"
+    prefix:   /admin/agenda
+
+ekyna_agenda_api:
+    resource: "routing/api.yml"
+    prefix:   /api/agenda

@@ -1,0 +1,3 @@
+ekyna_agenda_event_admin:
+    resource: "admin/event.yml"
+    prefix:   /events

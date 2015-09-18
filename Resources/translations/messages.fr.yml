@@ -1,0 +1,22 @@
+ekyna_agenda:
+    label: Agenda
+    event:
+        label:
+            singular: Événement
+            plural: Événements
+        header:
+            list: Événements <small>Liste des événements</small>
+            show: Détail de l'événement <small>%name%</small>
+            new: Créer un nouvel événement
+            edit: Modifier l'événement <small>%name%</small>
+            remove: Supprimer l'événement <small>%name%</small>
+        button:
+            list: Liste des événements
+            show: Détail de l'événement
+            new: Nouvel événement
+            edit: Modifier l'événement
+            remove: Supprimer l'événement
+        field:
+            private: Privé
+        alert:
+            empty_list: Aucun événement configuré
