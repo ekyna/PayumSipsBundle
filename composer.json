@@ -1,0 +1,27 @@
+{
+    "name" : "ekyna/sale",
+    "description" : "Sales management interfaces and traits",
+    "type" : "component",
+    "authors" : [{
+            "name" : "Etienne Dauvergne",
+            "homepage" : "http://ekyna.com"
+        }
+    ],
+    "homepage" : "https://github.com/ekyna/Sale",
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php" : ">=5.4"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Ekyna\\Component\\Sale\\" : ""
+        }
+    },
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "0.3.x-dev"
+        }
+    }
+}
