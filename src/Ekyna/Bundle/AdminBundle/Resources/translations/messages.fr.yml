@@ -1,0 +1,32 @@
+ekyna_admin:
+    title: Administration
+    login_header: Authentification
+    dashboard: Tableau de bord
+    configuration: Configuration
+    homepage: Page d'accueil
+    confirm:
+        delete: Êtes-vous sûr de vouloir supprimer cet élément ?
+    acl:
+        title: Permissions
+        no_rules: Aucune permission répertoriée
+    settings:
+        general:
+            label: Général
+            site_name: Nom du site
+            site_address: Addresse de votre entreprise
+            admin_name: Nom du contact principal
+            admin_email: Email du contact principal
+        notification:
+            label: Notifications
+            from_name: Nom de l'expéditeur
+            from_email: Email de l'expéditeur
+            to_emails: Emails des destinataires
+    resource:
+        message:
+            persist:
+                success: La ressource a été sauvegardée avec succès.
+                failure: L'application a rencontré une erreur relative à la base de données. La ressource n'a pas été sauvegardée.
+            remove:
+                success: La ressource a été supprimée avec succès.
+                integrity: Cette ressource est liée à d'autres ressources et ne peut pas être supprimée.
+                failure: L'application a rencontré une erreur relative à la base de données. La ressource n'a pas été supprimée.
