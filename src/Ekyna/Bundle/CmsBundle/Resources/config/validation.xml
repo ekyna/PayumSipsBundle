@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping
+    xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\Page">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>parent</value>
+                <value>name</value>
+            </option>
+            <option name="message">ekyna_cms.page.unique_name</option>
+            <option name="groups">
+                <value>Default</value>
+                <value>Generator</value>
+            </option>
+        </constraint>
+        <constraint name="Ekyna\Bundle\CmsBundle\Validator\Constraints\Page">
+            <option name="groups">
+                <value>Default</value>
+                <value>Generator</value>
+            </option>
+        </constraint>
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">64</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="seo">
+            <constraint name="Valid" />
+        </property>
+        <property name="translations">
+            <constraint name="Valid" />
+        </property>
+        <!-- TODO validate controller -->
+    </class>
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\PageTranslation">
+        <property name="title">
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">64</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\Menu">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>root</value>
+                <value>name</value>
+            </option>
+            <option name="message">ekyna_cms.menu.unique_name</option>
+            <option name="groups">
+                <value>Default</value>
+                <value>Generator</value>
+            </option>
+        </constraint>
+        <constraint name="Ekyna\Bundle\CmsBundle\Validator\Constraints\Menu" />
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">255</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\MenuTranslation">
+        <property name="title">
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">255</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\Seo">
+	    <property name="changefreq">
+	        <constraint name="Choice">
+	            <option name="callback">getChangefreqs</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+	        </constraint>
+	    </property>
+        <property name="priority">
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Range">
+                <option name="min">0</option>
+                <option name="max">1</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="follow">
+            <constraint name="NotNull">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Type">
+                <option name="type">bool</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="index">
+            <constraint name="NotNull">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Type">
+                <option name="type">bool</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="translations">
+            <constraint name="Valid" />
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\SeoTranslation">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>locale</value>
+                <value>title</value>
+            </option>
+            <option name="message">ekyna_cms.seo.unique_title</option>
+            <option name="groups">
+                <value>Default</value>
+                <value>Generator</value>
+            </option>
+        </constraint>
+        <property name="title">
+            <constraint name="NotBlank">
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="max">255</option>
+                <option name="groups">
+                    <value>Default</value>
+                    <value>Generator</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="description">
+            <constraint name="NotBlank" />
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\AbstractBlock">
+        <constraint name="Ekyna\Bundle\CmsBundle\Validator\Constraints\BlockIdentity" />
+        <property name="row">
+            <constraint name="GreaterThanOrEqual">
+                <option name="value">1</option>
+            </constraint>
+        </property>
+        <property name="column">
+            <constraint name="Range">
+                <option name="min">1</option>
+                <option name="max">12</option>
+            </constraint>
+        </property>
+        <property name="size">
+            <constraint name="Range">
+                <option name="min">1</option>
+                <option name="max">12</option>
+            </constraint>
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\CmsBundle\Entity\Content">
+        <constraint name="Ekyna\Bundle\CmsBundle\Validator\Constraints\ContentGrid" />
+        <property name="version">
+            <constraint name="NotNull" />
+        </property>
+        <property name="blocks">
+            <constraint name="Valid" />
+        </property>
+    </class>
+
+</constraint-mapping>
