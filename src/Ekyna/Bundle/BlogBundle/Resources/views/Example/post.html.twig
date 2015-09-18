@@ -1,0 +1,14 @@
+{% extends "EkynaBlogBundle:Example:layout.html.twig" %}
+
+{% block metas %}
+    {{ cms_metas(post.seo) }}
+{% endblock metas %}
+
+{% block left %}
+<h1>{{ post.title }}</h1>
+<p>
+    <em>{{ post.publishedAt|localizeddate('full', 'short') }}</em>
+</p>
+<hr>
+{{ cms_content(post.content) }}
+{% endblock left %}

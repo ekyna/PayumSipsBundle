@@ -1,0 +1,16 @@
+{% extends "EkynaCmsBundle::base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            {% block left %}{% endblock left %}
+        </div>
+        <div class="col-md-3">
+            {% block right %}
+            {{ render_esi(controller('EkynaBlogBundle:Example:side')) }}
+            {% endblock right %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

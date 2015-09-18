@@ -1,0 +1,7 @@
+ekyna_blog_category_admin:
+    resource: "admin/category.yml"
+    prefix:   /categories
+
+ekyna_blog_post_admin:
+    resource: "admin/post.yml"
+    prefix:   /posts

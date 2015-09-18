@@ -1,0 +1,28 @@
+{% extends "EkynaBlogBundle:Example:layout.html.twig" %}
+
+{% block left %}
+{{ cms_title() }}
+{{ cms_content() }}
+<hr>
+
+{% for p in posts %}
+<div>
+    <p class="h4">
+        <a href="{{ path('ekyna_blog_example_post', {'categorySlug': p.category.slug, 'postSlug': p.slug}) }}">
+            {{ p.title }}
+        </a>
+    </p>
+    <p>
+        <em>{{ p.publishedAt|localizeddate('full', 'short') }}</em>
+    </p>
+    <p>
+        {{ p.getContentSummary(256)|raw }}
+    </p>
+</div>
+{% endfor %}
+
+<hr>
+<div style="text-align: center">
+    {{ pagerfanta(pager, 'twitter_bootstrap3') }}
+</div>
+{% endblock left %}

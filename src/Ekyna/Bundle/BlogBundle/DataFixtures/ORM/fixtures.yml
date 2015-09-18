@@ -1,0 +1,18 @@
+Ekyna\Bundle\BlogBundle\Entity\Category:
+    "blog_category_test":
+        name: Blog category test
+        enabled: true
+    "blog_category_{1..3}":
+        name: Blog category <current()>
+        enabled: true
+
+Ekyna\Bundle\BlogBundle\Entity\Post:
+    "blog_post (template)":
+        category: @blog_category_<numberBetween(1, 3)>
+        subtitle: Blog post subtitle test
+        createdAt: <dateTimeBetween('-200 days', 'now')>
+        publishedAt: <dateTimeBetween($createdAt, 'now')>
+    "blog_post_test (extends blog_post)":
+        title: Blog post test
+    "blog_post_{1..10} (extends blog_post)":
+        title: Blog post <current()>
