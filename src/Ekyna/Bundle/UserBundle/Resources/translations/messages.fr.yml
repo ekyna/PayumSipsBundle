@@ -1,0 +1,162 @@
+ekyna_user:
+    gender:
+        short:
+            mr: Mr
+            mrs: Mme
+            miss: Melle
+        long:
+            mr: Monsieur
+            mrs: Madame
+            miss: Mademoiselle
+    user:
+        label:
+            singular: Utilisateur
+            plural: Utilisateurs
+        header:
+            list: Utilisateurs <small>Liste des utilisateurs</small>
+            show: Détail de l'utilisateur <small>%name%</small>
+            new: Créer un nouvel utilisateur
+            edit: Modifier l'utilisateur <small>%name%</small>
+            remove: Supprimer l'utilisateur <small>%name%</small>
+        button:
+            list: Liste des utilisateurs
+            show: Détail de l'utilisateur
+            new: Nouvel utilisateur
+            edit: Modifier l'utilisateur
+            generate_password: Générer un nouveau mot de passe
+            clear_password_request: Annuler la demande de réinitilisation
+            remove: Supprimer l'utilisateur
+        field:
+            send_creation_email: Notification l'utilisateur de la création de son compte.
+            password_request_at: Date réinitialisation du mot de passe
+            confirmation_token: Jeton de confirmation
+            credentials_expired: Mot de passe expérié
+            credentials_expires_at: Date d'expiration du mot de passe
+        alert:
+            empty_list: Aucun utilisateur configuré
+            no_password_request: Aucune demande de réinitialisation du mot de passe trouvée.
+            password_request_cleared: La demande de réinitialisation a bien été annulée.
+        event:
+            credentials_sent: Un e-mail contenant les informations de connection a été envoyé à l'utilisateur.
+    group:
+        label:
+            singular: Groupe
+            plural: Groupes
+        header:
+            list: Groupes <small>Liste des groupes</small>
+            show: Détail du groupe <small>%name%</small>
+            new: Créer un nouveau groupe
+            edit: Modifier le groupe <small>%name%</small>
+            edit_permissions: Modifier les permissions du groupe <small>%name%</small>
+            remove: Supprimer le groupe <small>%name%</small>
+        button:
+            list: Liste des groupes
+            show: Détail du groupe
+            new: Nouveau groupe
+            edit: Modifier le groupe
+            edit_permissions: Modifier les permissions
+            remove: Supprimer le groupe
+        alert:
+            empty_list: Aucun groupe configuré
+    address:
+        label:
+            singular: Adresse
+            plural: Adresses
+        header:
+            list: Adresses <small>Liste des adresses</small>
+            show: Détail de l'adresse
+            new: Créer une nouvelle adresse
+            edit: Modifier l'adresse
+            remove: Supprimer l'adresse
+        button:
+            list: Liste des adresses
+            show: Détail de l'adresse
+            new: Nouvelle adresse
+            edit: Modifier l'adresse
+            remove: Supprimer l'adresse
+        alert:
+            empty_list: Aucune adresse configuré
+        message:
+            create:
+                success: L'adresse a été créée avec succès.
+                failure: L'application a rencontré une erreur lors de la création de votre adresse.
+            edit:
+                success: L'adresse a été modifiée avec succès.
+                failure: L'application a rencontré une erreur lors de l'enregistrement de votre adresse.
+            remove:
+                confirm: Souhaitez-vous réellement supprimer cette adresse ?
+                success: L'adresse a été supprimée avec succès.
+                failure: L'application a rencontré une erreur lors de la suppression de votre adresse.
+    account:
+        title: Espace client
+        menu:
+            my_profile: Mon profil
+            backend: Administration
+            login: Connexion
+            logout: Se déconnecter
+            profile: Mes informations
+            password: Changer mon mot de passe
+            address: Mes adresses
+        address:
+            list: Mon carnet d'adresses
+            new: Nouvelle adresse
+            edit: Modifier une adresse
+            remove: Supprimer une adresse
+        password:
+            title: Changer mon mot de passe
+            current: Mot de passe actuel
+            new: Nouveau mot de passe
+            confirm: Vérification
+            submit: Modifier mon mot de passe
+        profile:
+            show: Mes informations
+            edit: Modifier mes informations
+        registration:
+            email_check: Vérification par email
+            confirmed:
+                title: Compte activé
+                message: Félicitations ! Votre compte est maintenant activé.
+            button: Inscription
+        resetting:
+            title: Réinitialisation du mot de passe
+            button: Réinitialiser le mot de passe
+    email:
+        creation:
+            subject: "[%sitename%] Création de votre compte"
+            title : Création de votre compte
+            message: |
+                <p>Bonjour %username%.</p>
+                <p>Vous recevez cet email suite à la création de votre compte client sur %sitename%.</p>
+                <p>Vous pouvez dès à présent <a href="%login_url%">vous connecter</a> en utilisant vos identifiants :<br>
+                Nom d'utilisateur : <strong>%login%</strong><br>
+                Mot de passe : <strong>%password%</strong>.</p>
+        new_password:
+            subject: "[%sitename%] Nouveaux identifiants"
+            title : Nouveaux identifiants
+            message: |
+                <p>Bonjour %username%.</p>
+                <p>Vous recevez cet email suite à la modification de votre mot de passe sur %sitename%.</p>
+                <p>Vous pouvez dès à présent <a href="%login_url%">vous connecter</a> en utilisant vos nouveaux identifiants :<br>
+                Nom d'utilisateur : <strong>%login%</strong><br>
+                Mot de passe : <strong>%password%</strong>.</p>
+        login_success:
+            subject: "[%sitename%] Notification de connexion"
+            title : Notification de connexion
+            message: |
+                <p>Bonjour %username%.</p>
+                <p>Vous recevez cet email suite à une connexion réussie à votre compte client sur %sitename% le %date%.<br>
+                Si vous n'êtes pas à l'origine de cette connexion, veuillez s'il vous plait changer votre mot de passe et avertir notre adminitrateur.</p>
+        registration:
+            subject: "[%sitename%] Création de votre compte client"
+            title: Création de votre compte utilisateur
+            message: |
+                <p>Bonjour %username%.</p>
+                <p>Pour valider votre compte utilisateur, merci de vous rendre sur <a href="%confirmationUrl%"> cette page</a>.</p>
+                <p>Cordialement,<br>L'équipe %sitename%.</p>
+        resetting:
+            subject: "[%sitename%] Réinitialisation de votre mot de passe"
+            title: Réinitialisation de votre mot de passe
+            message: |
+                <p>Bonjour %username%.</p>
+                <p>Pour réinitialiser votre mot de passe, merci de vous rendre sur <a href="%confirmationUrl%">cette page</a>.</p>
+                <p>Cordialement,<br>L'équipe %sitename%.</p>
