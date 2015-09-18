@@ -1,0 +1,26 @@
+_gregwar_captcha_routing:
+    resource: "@GregwarCaptchaBundle/Resources/config/routing/routing.yml"
+
+_fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+_tinymce_routing:
+    resource: "@StfalconTinymceBundle/Resources/config/routing.yml"
+
+ekyna_core_form_plugins:
+    path: /js/form-plugins.json
+    defaults: { _controller: "EkynaCoreBundle:Form:config" }
+
+ekyna_core_download:
+    path: /download/file/{key}
+    defaults: { _controller: "EkynaCoreBundle:File:download" }
+    requirements:
+        _method: GET
+        key: "[a-z0-9-\./]+"
+    options: { expose: true }
+
+ekyna_core_tiymce_upload:
+    path: /tinymce/upload
+    defaults: { _controller: "EkynaCoreBundle:File:tinymceUpload" }
+    requirements:
+        _method: POST

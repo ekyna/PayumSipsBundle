@@ -1,0 +1,18 @@
+doctrine:
+    dbal:
+        types:
+            phone_number: Misd\PhoneNumberBundle\Doctrine\DBAL\Types\PhoneNumberType
+    orm:
+        entity_managers:
+            default:
+                filters:
+                    softdeleteable:
+                        class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                        enabled: true
+                dql:
+                    datetime_functions:
+                        month: Ekyna\Bundle\CoreBundle\Dql\Month
+                        year: Ekyna\Bundle\CoreBundle\Dql\Year
+                        day: Ekyna\Bundle\CoreBundle\Dql\Day
+                        rand: Ekyna\Bundle\CoreBundle\Dql\Rand
+                        unix_timestamp: Ekyna\Bundle\CoreBundle\Dql\UnixTimestamp
