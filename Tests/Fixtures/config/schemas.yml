@@ -1,0 +1,34 @@
+schemas:
+    product:
+        title: Produit
+        groups:
+            general:
+                title: Général
+                characteristics:
+                    reference:
+                        title: Référence
+                        type: text
+                    color:
+                        title: Couleur
+                        type: choice
+                    size:
+                        title: Taille de l'écran
+                        type: number
+                        format: "%s pouces"
+                    brand:
+                        title: Marque
+                        type: text
+                        virtual: true
+                        property_paths: ['product.brand.title']
+                    release_date:
+                        title: Date de sortie
+                        type: datetime
+            network:
+                title: Réseaux
+                characteristics:
+                    wifi:
+                        title: WiFi
+                        type: boolean
+                    accessories:
+                        title: Accessoires
+                        type: html
