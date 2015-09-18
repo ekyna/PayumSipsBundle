@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+                        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ekyna_admin.twig.show_extension.template">EkynaAdminBundle:Show:show_div_layout.html.twig</parameter>
+    </parameters>
+
+    <services>
+        <!-- Settings Schema -->
+        <service id="ekyna_admin.settings.general" class="Ekyna\Bundle\AdminBundle\Settings\GeneralSettingsSchema">
+            <tag name="ekyna_setting.schema" namespace="general" position="0" />
+        </service>
+        <service id="ekyna_admin.settings.notification" class="Ekyna\Bundle\AdminBundle\Settings\NotificationSettingsSchema">
+            <tag name="ekyna_setting.schema" namespace="notification" position="1" />
+        </service>
+
+        <!-- Pool Factory / Registry -->
+        <service id="ekyna_admin.pool_factory" class="Ekyna\Bundle\AdminBundle\Pool\ConfigurationFactory" />
+        <service id="ekyna_admin.pool_registry" class="Ekyna\Bundle\AdminBundle\Pool\ConfigurationRegistry">
+            <!-- Services with "ekyna_admin.configuration" tag -->
+            <argument type="collection" />
+        </service>
+
+        <!-- Acl Operator -->
+        <service id="ekyna_admin.acl_operator" class="Ekyna\Bundle\AdminBundle\Acl\AclOperator">
+            <argument type="service" id="security.acl.provider" />
+            <argument type="service" id="security.acl.permission.map" />
+            <argument type="service" id="ekyna_admin.pool_registry" />
+            <argument type="service" id="security.context" />
+        </service>
+
+        <!-- Kernel controller event listener -->
+        <service id="ekyna_admin.admin_listener" class="Ekyna\Bundle\AdminBundle\EventListener\AdminListener">
+            <argument type="service" id="ekyna_admin.acl_operator" />
+            <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController" />
+        </service>
+
+        <!-- Admin Menus -->
+        <service id="ekyna_admin.menu.pool" class="Ekyna\Bundle\AdminBundle\Menu\MenuPool" />
+        <service id="ekyna_admin.menu.builder" class="Ekyna\Bundle\AdminBundle\Menu\MenuBuilder">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="translator" />
+            <argument type="service" id="ekyna_admin.menu.pool" />
+            <argument type="service" id="ekyna_admin.acl_operator" />
+        </service>
+        <service id="ekyna_admin.menu.side"
+            class="Knp\Menu\MenuItem" 
+            factory-service="ekyna_admin.menu.builder" 
+            factory-method="createSideMenu" 
+            scope="request">
+            <argument type="service" id="request" />
+            <tag name="knp_menu.menu" alias="ekyna_admin.side" />
+        </service>
+        <service id="ekyna_admin.menu.breadcrumb" 
+            class="Knp\Menu\MenuItem" 
+            factory-service="ekyna_admin.menu.builder" 
+            factory-method="createBreadcrumb" 
+            scope="request">
+            <argument type="service" id="request" />
+            <tag name="knp_menu.menu" alias="ekyna_admin.breadcrumb" />
+        </service>
+
+        <!-- Form Types Extensions -->
+        <service id="ekyna_admin.form.admin_extension" class="Ekyna\Bundle\AdminBundle\Form\Extension\AdminTypeExtension">
+		    <tag name="form.type_extension" alias="form" />
+		</service>
+
+        <!-- Form Types -->
+        <service id="ekyna_admin.resource.form_type" class="Ekyna\Bundle\AdminBundle\Form\Type\ResourceType">
+            <argument type="service" id="ekyna_admin.pool_registry" />
+            <argument type="service" id="ekyna_admin.acl_operator" />
+            <tag name="form.type" alias="ekyna_resource" />
+        </service>
+
+        <!-- Table types -->
+        <service id="ekyna_admin.table.actions_column" class="Ekyna\Bundle\AdminBundle\Table\Type\Column\ActionsType">
+            <argument type="service" id="ekyna_admin.acl_operator" />
+            <tag name="table.column_type" alias="admin_actions" />
+        </service>
+        <service id="ekyna_admin.table.nested_actions_column" class="Ekyna\Bundle\AdminBundle\Table\Type\Column\NestedActionsType">
+            <argument type="service" id="ekyna_admin.acl_operator" />
+            <tag name="table.column_type" alias="admin_nested_actions" />
+        </service>
+
+        <!-- Resource Helper -->
+        <service id="ekyna_admin.helper.resource_helper" class="Ekyna\Bundle\AdminBundle\Helper\ResourceHelper">
+            <argument type="service" id="ekyna_admin.pool_registry" />
+            <argument type="service" id="ekyna_admin.acl_operator" />
+            <argument type="service" id="router" />
+        </service>
+
+        <!-- Translation -->
+        <service id="ekyna_admin.translatable_listener.doctrine.orm" class="Ekyna\Bundle\AdminBundle\EventListener\ORMTranslatableListener">
+            <argument type="service" id="ekyna_core.locale_provider.request" />
+            <argument>%ekyna_admin.translation_mapping%</argument>
+            <tag name="doctrine.event_subscriber" connection="default" priority="99" />
+        </service>
+        <!--<service id="sylius.translation.translatable_listener.doctrine.mongodb_odm" class="Ekyna\Bundle\AdminBundle\EventListener\ODMTranslatableListener">
+            <argument type="service" id="sylius.translation.locale_provider" />
+            <argument>%sylius.translation.mapping%</argument>
+            <tag name="doctrine_mongodb.odm.event_subscriber" connection="default" priority="99" />
+        </service>-->
+
+        <!-- Twig Extensions -->
+	    <service id="ekyna_admin.twig.admin_extension" class="Ekyna\Bundle\AdminBundle\Twig\AdminExtension">
+            <argument type="service" id="ekyna_admin.helper.resource_helper" />
+            <argument type="service" id="ekyna_core.twig.ui_extension" />
+	        <argument>%ekyna_admin.logo_path%</argument>
+	        <tag name="twig.extension" />
+	    </service>
+	    <service id="ekyna_admin.twig.show_extension" class="Ekyna\Bundle\AdminBundle\Twig\ShowExtension">
+	        <argument>%ekyna_admin.twig.show_extension.template%</argument>
+	        <tag name="twig.extension" />
+	    </service>
+
+    </services>
+
+</container>
