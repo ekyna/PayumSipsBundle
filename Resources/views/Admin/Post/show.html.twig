@@ -1,0 +1,39 @@
+{% extends "EkynaAdminBundle:Entity:sided.html.twig" %}
+
+{% block title %}
+<h1>{{ 'ekyna_blog.post.header.show'|trans({'%name%': post})|raw }}</h1>
+{% endblock %}
+
+{% block actions %}
+{{ admin_resource_btn(post, 'list') }}
+{{ admin_resource_btn(post, 'new') }}
+{% endblock %}
+
+{% block main %}
+<div class="actions">
+    {{ admin_resource_btn(post, 'edit') }}
+    {{ admin_resource_btn(post, 'remove') }}
+</div>
+<div class="show show-with-tabs">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#blog-post-general" data-toggle="tab">{{ 'ekyna_core.field.general'|trans }}</a></li>
+        <li><a href="#blog-post-seo" data-toggle="tab">{{ 'ekyna_core.field.seo'|trans }}</a></li>
+    </ul>
+    <div class="show-body">
+        <div class="tab-content">
+            <div class="tab-pane active" id="blog-post-general">
+                {{ show_row(post.title, 'text', 'ekyna_core.field.title') }}
+                {{ show_row(post.subTitle, 'text', 'ekyna_core.field.subtitle') }}
+                <div class="row">
+                    <div class="col-md-6">{{ show_row(post.category, 'entity', 'ekyna_blog.category.label.singular', {'field': 'name', 'route': 'ekyna_blog_category_admin_show', 'route_params_map': {'categoryId': 'id'}, 'label_nb_col': 4}) }}</div>
+                    <div class="col-md-6">{{ show_row(post.publishedAt, 'date', 'ekyna_core.field.published_at', {'label_nb_col': 4, 'format': 'MMMM y'}) }}</div>
+                </div>
+                {{ show_row(post.tags, 'entity', 'ekyna_cms.tag.label.plural', {'field': 'name', 'route': 'ekyna_cms_tag_admin_show', 'route_params_map': {'tagId': 'id'}}) }}
+            </div>
+            <div class="tab-pane" id="blog-post-seo">
+                {{ show_row(post.seo, 'seo') }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

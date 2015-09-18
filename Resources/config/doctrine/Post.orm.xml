@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                            http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Ekyna\Bundle\BlogBundle\Entity\Post"
+            repository-class="Ekyna\Bundle\BlogBundle\Entity\PostRepository"
+            table="blog_post">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="title" type="string" column="title" length="255" />
+        <field name="subTitle" type="string" column="sub_title" length="255" />
+        <field name="publishedAt" column="published_at" type="datetime" nullable="true" />
+
+        <field name="slug" column="slug" type="string" length="255" unique="true">
+            <gedmo:slug unique="true" updatable="false" fields="title" />
+        </field>
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create" />
+        </field>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
+            <gedmo:timestampable on="update" />
+        </field>
+
+        <many-to-one target-entity="Ekyna\Bundle\BlogBundle\Entity\Category" field="category">
+            <join-column name="category_id" referenced-column-name="id" on-delete="RESTRICT" nullable="false" />
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>

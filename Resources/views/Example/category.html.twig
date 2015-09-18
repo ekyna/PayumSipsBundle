@@ -1,0 +1,39 @@
+{% extends "EkynaBlogBundle:Example:layout.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            <h1>{{ event.title }}</h1>
+            <p>
+                <em>{{ event.startDate|localizeddate('short', 'short') }} - {{ event.endDate|localizeddate('short', 'short') }}</em>
+            </p>
+            <div>
+                {{ event.content|raw }}
+            </div>
+            <hr>
+            {% set link_params = {} %}
+            {% set page = app.request.query.get('page') %}
+            {% if page > 1 %}
+                {% set link_params = {'page': page} %}
+            {% endif %}
+            <p style="text-align: center">
+                <a href="{{ path('ekyna_agenda_example_index', link_params) }}" class="btn btn-default">Retour</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+            {% for e in latest %}
+                <p>
+                    <a href="{{ path('ekyna_agenda_example_detail', link_params|merge({'slug': e.slug})) }}" class="h4">{{ e.title }}</a><br>
+                    <em>{{ e.startDate|localizeddate('short', 'short') }} - {{ e.endDate|localizeddate('short', 'short') }}</em>
+                </p>
+                <p>
+                    {{ e.content|striptags|truncate(128, true, '&hellip;')|raw }}
+                </p>
+                {% if not loop.last %}<hr>{% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

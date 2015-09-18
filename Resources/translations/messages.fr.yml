@@ -1,0 +1,38 @@
+ekyna_blog:
+    category:
+        label:
+            singular: Catégorie
+            plural: Catégories
+        header:
+            list: Catégories <small>Liste des catégories</small>
+            show: Détail de la catégorie <small>%name%</small>
+            new: Créer une nouvelle catégorie
+            new_child: Créer une nouvelle catégorie sous <small>%name%</small>
+            edit: Modifier la catégorie <small>%name%</small>
+            remove: Supprimer la catégorie <small>%name%</small>
+        button:
+            list: Liste des catégories
+            show: Détail de la catégorie
+            new: Nouvelle catégorie
+            edit: Modifier la catégorie
+            remove: Supprimer la catégorie
+        alert:
+            empty_list: Aucune catégorie configuré
+    post:
+        label:
+            singular: Article
+            plural: Articles
+        header:
+            list: Articles <small>Liste des articles</small>
+            show: Détail de l'article <small>%name%</small>
+            new: Créer un nouvel article
+            edit: Modifier l'article <small>%name%</small>
+            remove: Supprimer l'article <small>%name%</small>
+        button:
+            list: Liste des articles
+            show: Détail de l'article
+            new: Nouvel article
+            edit: Modifier l'article
+            remove: Supprimer l'article
+        alert:
+            empty_list: Aucun article configuré

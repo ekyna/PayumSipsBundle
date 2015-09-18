@@ -1,0 +1,16 @@
+<ul class="nav nav-pills nav-stacked">
+{% for c in categories %}
+    <li{% if category is not sameas(null) and category.id == c.id %} class="active"{% endif %}>
+        <a href="{{ path('ekyna_blog_example_category', {'categorySlug': c.slug}) }}">{{ c.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% for p in posts %}
+<p>
+    <a href="{{ path('ekyna_blog_example_post', {'categorySlug': p.category.slug, 'postSlug': p.slug}) }}">
+        {{ p.title }}
+    </a><br>
+    <em>{{ p.publishedAt|localizeddate('full', 'none') }}</em>
+</p>
+{% endfor %}
