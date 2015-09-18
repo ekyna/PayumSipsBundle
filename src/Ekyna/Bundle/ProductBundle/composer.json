@@ -1,0 +1,34 @@
+{
+    "name" : "ekyna/product-bundle",
+    "description" : "Product management",
+    "type" : "symfony-bundle",
+    "authors" : [{
+            "name" : "Etienne Dauvergne",
+            "homepage" : "http://ekyna.com"
+        }
+    ],
+    "keywords" : [
+        "symfony2",
+        "product",
+        "bundle"
+    ],
+    "homepage" : "https://github.com/ekyna/ProductBundle",
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php" : ">=5.4",
+        "symfony/framework-bundle" : "~2.3",
+        "ekyna/order-bundle" : "0.3.*@dev"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Ekyna\\Bundle\\ProductBundle\\" : ""
+        }
+    },
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "0.3.x-dev"
+        }
+    }
+}
