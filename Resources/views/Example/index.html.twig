@@ -1,0 +1,45 @@
+{% extends "EkynaCmsBundle::base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <h1>News</h1>
+            <hr>
+
+            {% set nb_per_row = 3 %}
+            {% set link_params = {} %}
+            {% if pager.currentPage > 1 %}
+                {% set link_params = {'page': pager.currentPage} %}
+            {% endif %}
+            {% for n in news %}
+                {% if loop.index0 % nb_per_row == 0 %}<div class="row">{% endif %}
+                <div class="col-md-{{ 12 / nb_per_row }}">
+                    <p class="h4">
+                        <a href="{{ path('ekyna_news_example_detail', link_params|merge({'slug': n.slug})) }}">
+                            {{ n.title }}
+                        </a>
+                    </p>
+                    <p>
+                        <em>{{ n.date|localizeddate('short', 'none') }}</em>
+                    </p>
+                    <p>
+                        {{ n.content|striptags|truncate(128, true, '&hellip;')|raw }}
+                    </p>
+                </div>
+                {% if loop.last or loop.index % nb_per_row == 0 %}</div>{% endif %}
+            {% endfor %}
+
+            <hr>
+
+            <div style="text-align: center">
+            {% if 1 < pager.nbPages -%}
+                {{ pagerfanta(pager, 'twitter_bootstrap3') }}
+            {%- endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock body %}

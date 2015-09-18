@@ -1,0 +1,3 @@
+ekyna_news_news_admin:
+    resource: "admin/news.yml"
+    prefix:   /news

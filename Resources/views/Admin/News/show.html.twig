@@ -1,0 +1,39 @@
+{% extends "EkynaAdminBundle:Entity:sided.html.twig" %}
+
+{% block title %}
+<h1>{{ 'ekyna_news.news.header.show'|trans({'%name%': news.name})|raw }}</h1>
+{% endblock %}
+
+{% block actions %}
+{{ admin_resource_btn(news, 'list') }}
+{{ admin_resource_btn(news, 'new') }}
+{% endblock %}
+
+{% block main %}
+<div class="actions">
+    {{ admin_resource_btn(news, 'edit') }}
+    {{ admin_resource_btn(news, 'remove') }}
+</div>
+<div class="show show-with-tabs">
+    <ul class="nav nav-tabs">
+	    <li class="active"><a href="#news-news-general" data-toggle="tab">{{ 'ekyna_core.field.general'|trans }}</a></li>
+	</ul>
+	<div class="show-body">
+	    <div class="tab-content">
+		    <div class="tab-pane active" id="news-news-general">
+                {{ show_row(news.name, 'text', 'ekyna_core.field.name') }}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ show_row(news.date, 'datetime', 'ekyna_core.field.date', {'label_nb_col': 4, 'widget_nb_col': 8}) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ show_row(news.enabled, 'checkbox', 'ekyna_core.field.enabled', {'label_nb_col': 4, 'widget_nb_col': 8}) }}
+                    </div>
+                </div>
+                {{ show_row(news.title, 'text', 'ekyna_core.field.title') }}
+                {{ show_row(path('ekyna_news_news_admin_tinymce', identifiers|merge({'newsId': news.id})), 'tinymce', 'ekyna_core.field.content') }}
+		    </div>
+        </div>
+	</div>
+</div>
+{% endblock %}
