@@ -1,0 +1,34 @@
+{
+	"name" : "ekyna/fontawesome-bundle",
+	"description" : "FontAwesome Symfony2 integration",
+	"type" : "symfony-bundle",
+	"authors" : [{
+			"name" : "Etienne Dauvergne",
+			"homepage" : "http://ekyna.com"
+		}
+	],
+	"keywords" : [
+		"symfony2",
+		"fontawesome",
+		"bundle"
+	],
+	"homepage" : "https://github.com/ekyna/FontAwesomeBundle",
+	"license" : [
+		"MIT"
+	],
+	"require" : {
+		"php" : ">=5.3.3",
+        "symfony/framework-bundle" : "~2.3",
+		"fortawesome/font-awesome" : "*"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Ekyna\\Bundle\\FontAwesomeBundle\\" : ""
+		}
+	},
+	"extra" : {
+		"branch-alias" : {
+			"dev-master" : "0.3.x-dev"
+		}
+	}
+}
