@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+                        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ekyna_user.gender.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\GenderType</parameter>
+        <parameter key="ekyna_user.identity.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\IdentityType</parameter>
+        <parameter key="ekyna_user.address.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\AddressType</parameter>
+        <parameter key="ekyna_user.address_choice.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\AddressChoiceType</parameter>
+        <parameter key="ekyna_user.user.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\UserType</parameter>
+        <parameter key="ekyna_user.user_search.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\UserSearchType</parameter>
+        <parameter key="ekyna_user.profile.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\ProfileType</parameter>
+        <parameter key="ekyna_user.registration.form_type.class">Ekyna\Bundle\UserBundle\Form\Type\RegistrationType</parameter>
+
+        <parameter key="ekyna_user.user.table_type.class">Ekyna\Bundle\UserBundle\Table\Type\UserType</parameter>
+    </parameters>
+
+    <services>
+
+        <!-- Events listeners -->
+        <service id="ekyna_user.authentication_listener" class="Ekyna\Bundle\UserBundle\EventListener\AuthenticationListener">
+            <argument type="service" id="security.access.decision_manager" />
+            <argument type="service" id="ekyna_user.mailer.default" />
+            <argument>%ekyna_user.notification_config%</argument>
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="ekyna_user.user.listener" class="Ekyna\Bundle\UserBundle\EventListener\UserListener">
+            <argument type="service" id="ekyna_user.group.repository" />
+            <argument type="service" id="fos_user.user_manager" />
+            <argument type="service" id="ekyna_user.mailer.default" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <!-- Form types -->
+        <service id="ekyna_user.gender.form_type" class="%ekyna_user.gender.form_type.class%">
+            <argument>%ekyna_user.gender_class%</argument>
+            <tag name="form.type" alias="ekyna_user_gender" />
+        </service>
+        <service id="ekyna_user.identity.form_type" class="%ekyna_user.identity.form_type.class%">
+            <tag name="form.type" alias="ekyna_user_identity" />
+        </service>
+        <service id="ekyna_user.user.form_type" class="%ekyna_user.user.form_type.class%">
+            <argument type="service" id="security.context" />
+            <argument>%ekyna_user.user.class%</argument>
+            <argument>%ekyna_user.group.class%</argument>
+            <argument>%ekyna_user.config%</argument>
+            <tag name="form.type" alias="ekyna_user_user" />
+        </service>
+        <service id="ekyna_user.address.form_type" class="%ekyna_user.address.form_type.class%">
+            <argument>%ekyna_user.address.class%</argument>
+            <tag name="form.type" alias="ekyna_user_address" />
+        </service>
+        <service id="ekyna_user.cart_address_choice.form_type" class="%ekyna_user.address_choice.form_type.class%">
+            <argument>%ekyna_user.address.class%</argument>
+            <tag name="form.type" alias="ekyna_user_address_choice" />
+        </service>
+        <service id="ekyna_user.profile.form_type" class="%ekyna_user.profile.form_type.class%">
+            <argument>%ekyna_user.user.class%</argument>
+            <argument>%ekyna_user.config%</argument>
+            <tag name="form.type" alias="ekyna_user_profile" />
+        </service>
+        <service id="ekyna_user.registration.form_type" class="%ekyna_user.registration.form_type.class%">
+            <argument>%ekyna_user.user.class%</argument>
+            <argument>%ekyna_user.config%</argument>
+            <argument>%kernel.environment%</argument>
+            <tag name="form.type" alias="ekyna_user_registration" />
+        </service>
+        <service id="ekyna_user.user_search.form_type" class="%ekyna_user.user_search.form_type.class%">
+            <argument>%ekyna_user.user.class%</argument>
+            <tag name="form.type" alias="ekyna_user_search" />
+        </service>
+
+        <!-- Table types -->
+        <service id="ekyna_user.user.table_type" class="%ekyna_user.user.table_type.class%">
+            <argument>%ekyna_user.user.class%</argument>
+            <call method="setSecurityContext">
+                <argument type="service" id="security.context" />
+            </call>
+            <call method="setGroupClass">
+                <argument>%ekyna_user.group.class%</argument>
+            </call>
+            <tag name="table.type" alias="ekyna_user_user" />
+        </service>
+
+        <!-- User extensions -->
+        <service id="ekyna_user.extension.registry" class="Ekyna\Bundle\UserBundle\Extension\ExtensionRegistry" />
+        <service id="ekyna_user.extension.address" class="Ekyna\Bundle\UserBundle\Extension\AddressExtension">
+            <argument>%ekyna_user.config%</argument>
+            <tag name="ekyna_user.extension" />
+        </service>
+
+        <!-- Routing loader -->
+        <service id="ekyna_user.routing_loader" class="Ekyna\Bundle\UserBundle\Routing\AccountLoader">
+            <argument>%ekyna_user.config%</argument>
+            <tag name="routing.loader" />
+        </service>
+
+        <!-- Account Menu -->
+        <service id="ekyna_user.menu_builder" class="Ekyna\Bundle\UserBundle\Menu\MenuBuilder">
+            <argument type="service" id="knp_menu.factory" />
+            <argument type="service" id="security.context" />
+            <argument type="service" id="ekyna_user.extension.registry" />
+            <argument>%ekyna_user.config%</argument>
+        </service>
+        <service id="ekyna_user.menu.account"
+                class="Knp\Menu\MenuItem"
+                factory-service="ekyna_user.menu_builder"
+                factory-method="createAccountMenu"
+                scope="request">
+            <argument type="service" id="request" />
+            <tag name="knp_menu.menu" alias="account" />
+        </service>
+        <service id="ekyna_user.menu.user"
+                 class="Knp\Menu\MenuItem"
+                 factory-service="ekyna_user.menu_builder"
+                 factory-method="createUserMenu"
+                 scope="request">
+            <argument type="service" id="request" />
+            <tag name="knp_menu.menu" alias="user" />
+        </service>
+
+        <!-- Constraint validators -->
+        <service id="ekyna_user.gender.validator" class="Ekyna\Bundle\UserBundle\Validator\Constraints\GenderValidator">
+            <argument>%ekyna_user.gender_class%</argument>
+            <tag name="validator.constraint_validator" alias="ekyna_user_gender" />
+        </service>
+
+        <!-- Twig extensions -->
+	    <service id="ekyna_user.twig.user_extension" class="Ekyna\Bundle\UserBundle\Twig\UserExtension">
+	        <argument type="service" id="translator" />
+	        <argument type="service" id="ekyna_user.address.repository" />
+            <argument>%ekyna_user.config%</argument>
+	        <tag name="twig.extension" />
+	    </service>
+
+        <!-- (FOS) User manager -->
+        <service id="ekyna_user.user_manager.default" class="Ekyna\Bundle\UserBundle\Doctrine\UserManager" public="false">
+            <argument type="service" id="security.encoder_factory" />
+            <argument type="service" id="fos_user.util.username_canonicalizer" />
+            <argument type="service" id="fos_user.util.email_canonicalizer" />
+            <argument type="service" id="fos_user.entity_manager" />
+            <argument>%ekyna_user.user.class%</argument>
+            <argument>%ekyna_user.group.class%</argument>
+        </service>
+
+        <!-- Mailer -->
+        <service id="ekyna_user.mailer.default" class="Ekyna\Bundle\UserBundle\Mailer\Mailer" public="false">
+            <argument type="service" id="mailer" />
+            <argument type="service" id="router" />
+            <argument type="service" id="templating" />
+            <argument type="collection">
+                <argument key="confirmation.template">%fos_user.registration.confirmation.template%</argument>
+                <argument key="resetting.template">%fos_user.resetting.email.template%</argument>
+                <argument key="from_email" type="collection">
+                    <argument key="confirmation">%fos_user.registration.confirmation.from_email%</argument>
+                    <argument key="resetting">%fos_user.resetting.email.from_email%</argument>
+                </argument>
+            </argument>
+            <call method="setSettingsManager">
+                <argument type="service" id="ekyna_setting.manager" />
+            </call>
+            <call method="setTranslator">
+                <argument type="service" id="translator" />
+            </call>
+            <call method="setAccessDecisionManager">
+                <argument type="service" id="security.access.decision_manager" />
+            </call>
+            <call method="setConfig">
+                <argument>%ekyna_user.config%</argument>
+            </call>
+        </service>
+
+    </services>
+
+</container>
