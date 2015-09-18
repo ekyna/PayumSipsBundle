@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping
+    xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Ekyna\Bundle\MediaBundle\Entity\Folder">
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+        <!-- TODO parent (not for root) -->
+    </class>
+
+    <class name="Ekyna\Bundle\MediaBundle\Entity\Media">
+        <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Uploadable" />
+        <constraint name="Ekyna\Bundle\MediaBundle\Validator\Constraints\Media" />
+        <property name="file">
+            <constraint name="File" />
+        </property>
+        <property name="folder">
+            <constraint name="NotNull" />
+        </property>
+        <property name="translations">
+            <constraint name="Valid" />
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\MediaBundle\Entity\MediaTranslation">
+        <property name="locale">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="title">
+            <constraint name="Length">
+                <option name="max">64</option>
+            </constraint>
+            <!-- TODO not blank title if description is not blank -->
+        </property>
+    </class>
+
+    <class name="Ekyna\Bundle\MediaBundle\Model\Import\MediaImport">
+        <property name="keys">
+            <constraint name="Count">
+                <option name="min">1</option>
+                <option name="minMessage">ekyna_media.import.at_least_one_key</option>
+            </constraint>
+        </property>
+        <property name="medias">
+            <constraint name="Valid" />
+        </property>
+    </class>
+
+</constraint-mapping>
