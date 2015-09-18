@@ -1,0 +1,16 @@
+{% extends 'EkynaCartBundle::layout.html.twig' %}
+
+{% block cart %}
+<form action="{{ path('ekyna_cart_informations') }}" method="post">{# class="form-horizontal" #}
+    {% if user is not sameas(null) %}
+        {% include "EkynaCartBundle:Cart/Information:registered.html.twig" %}
+    {% else %}
+        {% include "EkynaCartBundle:Cart/Information:unregistered.html.twig" %}
+    {% endif %}
+</form>
+{% endblock cart %}
+
+{% block javascripts -%}
+    {{ parent() }}
+    <script type="text/javascript">require(['bundles/ekynacart/js/information']);</script>
+{%- endblock javascripts %}
