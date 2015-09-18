@@ -1,0 +1,35 @@
+{% spaceless %}
+<!DOCTYPE hmtl>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block metas %}{% endblock metas %}
+
+    {{ ui_google_font() }}
+
+    {% block stylesheets -%}
+        {% stylesheets output='css/example/main.css' filter='cssrewrite, ?yui_css' debug=false
+            'css/content.css'
+            'css/fontawesome.css'
+            'css/form.css'
+        %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+        {% endstylesheets %}
+    {%- endblock stylesheets %}
+
+    {% include 'EkynaCoreBundle:Ui:ie-fix.html.twig' %}
+
+    {{ require_js(not app.debug) }}
+</head>
+<body>
+    {% block body %}{% endblock body %}
+
+    {% block javascripts -%}
+        <script type="text/javascript">require(['bundles/ekynacms/js/main']);</script>
+    {%- endblock javascripts %}
+</body>
+</html>
+{% endspaceless %}

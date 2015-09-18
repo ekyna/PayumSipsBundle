@@ -1,0 +1,81 @@
+ekyna_cms:
+    settings:
+        cookies:
+            label: Cookies
+            mode:
+                label: Mode
+                header: En-tête
+                dialog: Dialogue
+            header_text: Texte du mode en-tête
+            dialog_text: Texte du mode dialogue
+            close: Masquer ce message
+            learn: En savoir plus
+    page:
+        label:
+            singular: Page
+            plural: Pages
+        header:
+            list: Pages <small>Liste des pages</small>
+            show: Détail de la page <small>%name%</small>
+            content_show: Contenu de la page <small>%name%</small>
+            new: Créer une nouvelle page
+            new_child: Créer une nouvelle page sous <small>%name%</small>
+            edit: Modifier la page <small>%name%</small>
+            content_edit: Modifier le contenu de la page <small>%name%</small>
+            remove: Supprimer la page <small>%name%</small>
+        button:
+            list: Liste des pages
+            show: Détail de la page
+            new: Nouvelle page
+            edit: Modifier la page
+            remove: Supprimer la page
+        field:
+            controller: Gabarit
+        alert:
+            no_item: Aucune page configuré
+    menu:
+        label:
+            singular: Menu
+            plural: Menus
+        header:
+            list: Menus <small>Liste des menus</small>
+            show: Détail du menu <small>%name%</small>
+            new: Créer un nouveau menu
+            new_child: Créer un nouveau menu sous <small>%name%</small>
+            edit: Modifier le menu <small>%name%</small>
+            remove: Supprimer le menu <small>%name%</small>
+        button:
+            list: Liste des menus
+            show: Détail du menu
+            new: Nouveau menu
+            edit: Modifier le menu
+            remove: Supprimer le menu
+        alert:
+            no_item: Aucun menu configuré
+    tag:
+        label:
+            singular: Tag
+            plural: Tags
+        header:
+            list: Tags <small>Liste des tags</small>
+            show: Détail du tag <small>%name%</small>
+            new: Créer un nouveau tag
+            edit: Modifier le tag <small>%name%</small>
+            remove: Supprimer le tag <small>%name%</small>
+        button:
+            list: Liste des tags
+            show: Détail du tag
+            new: Nouveau tag
+            edit: Modifier le tag
+            remove: Supprimer le tag
+        alert:
+            no_item: Aucun tag configuré
+    seo:
+        label:
+            singular: Référencement
+            plural: Référencements
+    field:
+        main_menu: Menu principal
+        footer_menu: Menu pied de page
+        show_main_menu: Afficher dans le menu principal
+        show_footer_menu: Afficher dans le menu du pied de page
