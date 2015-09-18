@@ -1,0 +1,12 @@
+ekyna_shipment:
+    shipment:
+        state:
+            checkout: Paiement
+            onhold: En cours d'envoi
+            pending: En attente
+            backordered: En réapprovisionnement
+            ready: Prêt
+            shipped: Expédié
+            completed: Complété
+            returned: Retourné
+            cancelled: Annulé
