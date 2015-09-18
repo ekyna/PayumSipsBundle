@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container
+    xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+                        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ekyna_core.collection.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\CollectionType</parameter>
+
+        <parameter key="ekyna_core.entity_search.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\EntitySearchType</parameter>
+        <parameter key="ekyna_core.hidden_entity.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\HiddenEntityType</parameter>
+
+        <parameter key="ekyna_core.key_value_collection.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\KeyValueCollectionType</parameter>
+        <parameter key="ekyna_core.key_value.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\KeyValueType</parameter>
+
+        <parameter key="ekyna_core.color_picker.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\ColorPickerType</parameter>
+        <parameter key="ekyna_core.captcha.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\CaptchaType</parameter>
+        <parameter key="ekyna_core.address.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\AddressType</parameter>
+        <parameter key="ekyna_core.upload.form_type.class">Ekyna\Bundle\CoreBundle\Form\Type\UploadType</parameter>
+    </parameters>
+
+    <services>
+        <!-- Form types -->
+        <service id="ekyna_core.collection.form_type" class="%ekyna_core.collection.form_type.class%">
+            <tag name="form.type" alias="ekyna_collection" />
+            <tag name="form.js" selector=".ekyna-collection" path="ekyna-form/collection" />
+        </service>
+
+        <service id="ekyna_core.entity_search.form_type" class="%ekyna_core.entity_search.form_type.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="form.type" alias="ekyna_entity_search" />
+            <tag name="form.js" selector=".entity-search" path="ekyna-form/entity-search" />
+        </service>
+        <service id="ekyna_core.hidden_entity.form_type" class="%ekyna_core.hidden_entity.form_type.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="form.type_guesser.doctrine" />
+            <tag name="form.type" alias="ekyna_hidden_entity" />
+        </service>
+
+        <service id="ekyna_core.key_value_collection.form_type" class="%ekyna_core.key_value_collection.form_type.class%">
+            <tag name="form.type" alias="ekyna_key_value_collection" />
+        </service>
+        <service id="ekyna_core.key_value.form_type" class="%ekyna_core.key_value.form_type.class%">
+            <tag name="form.type" alias="ekyna_key_value" />
+        </service>
+
+        <service id="ekyna_core.color_picker.form_type" class="%ekyna_core.color_picker.form_type.class%">
+            <tag name="form.type" alias="ekyna_color_picker" />
+            <tag name="form.js" selector=".form-color-picker" path="ekyna-form/color" />
+        </service>
+        <service id="ekyna_core.captcha.form_type" class="%ekyna_core.captcha.form_type.class%">
+            <tag name="form.type" alias="ekyna_captcha" />
+        </service>
+        <service id="ekyna_core.address.form_type" class="%ekyna_core.address.form_type.class%">
+            <argument type="service" id="request_stack" />
+            <tag name="form.type" alias="ekyna_address" />
+        </service>
+        <service id="ekyna_core.upload.form_type" class="%ekyna_core.upload.form_type.class%">
+            <tag name="form.type" alias="ekyna_upload" />
+            <tag name="form.js" selector=".upload-widget" path="ekyna-form/upload" />
+        </service>
+
+        <!-- Form Extensions -->
+        <service id="ekyna_core.form_type_sizing_extension" class="Ekyna\Bundle\CoreBundle\Form\Extension\FormTypeSizingExtension">
+            <tag name="form.type_extension" alias="form" />
+        </service>
+        <service id="ekyna_core.form_type_redirect_extension" class="Ekyna\Bundle\CoreBundle\Form\Extension\FormTypeRedirectExtension">
+            <argument type="service" id="request_stack" />
+            <tag name="form.type_extension" alias="form" />
+        </service>
+
+        <service id="ekyna_core.entity_type_extension" class="Ekyna\Bundle\CoreBundle\Form\Extension\EntityTypeExtension">
+            <tag name="form.type_extension" alias="entity" />
+            <tag name="form.js" selector=".entity-widget" path="ekyna-form/entity" />
+        </service>
+        <service id="ekyna_core.choice_type_parent_extension" class="Ekyna\Bundle\CoreBundle\Form\Extension\ChoiceTypeParentExtension">
+            <tag name="form.type_extension" alias="choice" />
+            <tag name="form.js" selector="select[data-parent-choice]" path="ekyna-form/parent-choice" />
+        </service>
+        <service id="ekyna_core.datetime_type_extension" class="Ekyna\Bundle\CoreBundle\Form\Extension\DatetimeTypeExtension">
+            <tag name="form.type_extension" alias="datetime" />
+            <tag name="form.js" selector=".form-datetime-picker" path="ekyna-form/datetime" />
+        </service>
+
+        <!-- Doctrine entity listener resolver -->
+        <service id="ekyna_core.doctrine.entity_listener_resolver" class="Ekyna\Bundle\CoreBundle\Doctrine\EntityListenerResolver">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+
+        <!-- Chain router -->
+        <service id="ekyna_core.router" class="Symfony\Cmf\Component\Routing\ChainRouter">
+            <argument type="service" id="logger" on-invalid="ignore" />
+            <call method="setContext">
+                <argument type="service" id="router.request_context" />
+            </call>
+        </service>
+
+        <!-- Http cache -->
+        <service id="ekyna_core.cache.tag_manager" class="Ekyna\Bundle\CoreBundle\Cache\TagManager">
+            <argument>%ekyna_core.cache_config%</argument>
+        </service>
+
+        <!-- Redirection -->
+        <service id="ekyna_core.redirection.provider_registry" class="Ekyna\Bundle\CoreBundle\Redirection\ProviderRegistry" />
+
+        <!-- Locale -->
+        <service id="ekyna_core.locale_provider.request" class="Ekyna\Bundle\CoreBundle\Locale\RequestLocaleProvider">
+            <argument>%locale%</argument>
+            <argument>%locales%</argument>
+            <tag name="kernel.event_subscriber" priority="98" />
+        </service>
+
+        <!-- Uploaders -->
+        <service id="ekyna_core.upload.uploader" class="Ekyna\Bundle\CoreBundle\Uploader\Uploader">
+            <argument type="service" id="oneup_flysystem.mount_manager" />
+            <argument>local_upload</argument><!-- TODO config -->
+        </service>
+
+        <!-- Doctrine event listeners -->
+        <service id="ekyna_core.upload.listener" class="Ekyna\Bundle\CoreBundle\Listener\UploadListener">
+            <argument type="service" id="ekyna_core.upload.uploader" />
+            <tag name="doctrine.entity_listener" />
+        </service>
+
+        <!-- Event listeners -->
+        <service id="ekyna_core.load_orm_metadata.event_subscriber" class="Ekyna\Bundle\CoreBundle\EventListener\LoadMetadataSubscriber">
+            <argument>%ekyna_core.entities%</argument>
+            <argument>%ekyna_core.interfaces%</argument>
+            <tag name="doctrine.event_subscriber" />
+        </service>
+        <service id="ekyna_core.kernel.event_subscriber" class="Ekyna\Bundle\CoreBundle\EventListener\KernelEventSubscriber">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="ekyna_core.http_cache.event_subscriber" class="Ekyna\Bundle\CoreBundle\EventListener\HttpCacheEventSubscriber">
+            <argument type="service" id="ekyna_core.cache.tag_manager" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+        <service id="ekyna_core.upload.event_subscriber" class="Ekyna\Bundle\CoreBundle\EventListener\UploadListener">
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <!-- Doctrine event listeners -->
+        <service id="ekyna_core.tagged_entity.listener" class="Ekyna\Bundle\CoreBundle\Listener\TaggedEntityListener" public="false">
+            <argument type="service" id="event_dispatcher" />
+            <tag name="doctrine.event_subscriber" connection="default" />
+        </service>
+
+        <!-- Twig extensions -->
+        <service id="ekyna_core.twig.utils_extension" class="Ekyna\Bundle\CoreBundle\Twig\UtilsExtension">
+            <tag name="twig.extension" />
+        </service>
+        <service id="ekyna_core.twig.ui_extension" class="Ekyna\Bundle\CoreBundle\Twig\UiExtension">
+            <argument type="service" id="request_stack" />
+            <argument type="service" id="ekyna_core.locale_provider.request" />
+            <argument>%ekyna_core.ui_config%</argument>
+            <tag name="twig.extension" />
+        </service>
+        <service id="twig.extension.text" class="Twig_Extensions_Extension_Text">
+            <tag name="twig.extension" />
+        </service>
+        <service id="twig.extension.intl" class="Twig_Extensions_Extension_Intl">
+            <tag name="twig.extension" />
+        </service>
+
+        <!-- KnpMenu matcher voter -->
+        <service id="ekyna_core.menu.voter.uri" class="Ekyna\Bundle\CoreBundle\Menu\Voter\UriVoter">
+            <tag name="knp_menu.voter" request="true" />
+        </service>
+
+        <!-- Boostrap modal -->
+        <service id="ekyna_core.modal" class="Ekyna\Bundle\CoreBundle\Modal\Renderer">
+            <argument id="twig" type="service"/>
+            <argument id="translator" type="service"/>
+            <argument>%kernel.charset%</argument>
+        </service>
+
+
+    </services>
+
+</container>

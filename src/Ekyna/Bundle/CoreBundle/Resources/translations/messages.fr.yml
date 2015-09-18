@@ -1,0 +1,202 @@
+ekyna_core:
+    value:
+        yes: Oui
+        no: Non
+        none: Aucun
+        undefined: Indéfini
+        choose: Choisissez
+        enabled: Activé
+        disabled: Désactivé
+    button:
+        previous: Précédente
+        next: Suivante
+        previous_step: Précédent
+        next_step: Suivant
+        start: Commencer
+        restart: Recommencer
+        reset: Réinitialiser
+        reset_and_list: Réinitialiser <small>et retour à la liste</small>
+        finish: Terminer
+        validate: Valider
+        complete: Compléter
+        confirm: Confirmer
+        play: Démarrer
+        pause: Pause
+        resume: Reprendre
+        stop: Stop
+        lock: Verrouiller
+        unlock: Déverrouiller
+        enable: Activer
+        disable: Désactiver
+        close: Fermer
+        open: Ouvrir
+        login: Connexion
+        logout: Se déconnecter
+        manage: Gérer
+        back: Retour
+        back_to_show: Retour au détail
+        back_to_list: Retour à la liste
+        show_front: Voir sur le site
+        list: Liste
+        show: Detail
+        content_show: Voir le contenu
+        content_edit: Modifier le contenu
+        content: Contenu
+        browse: Parcourir
+        select: Sélectionner
+        add: Ajouter
+        add_parameter: Ajouter un paramètre
+        add_attribute: Ajouter un attribut
+        new: Nouveau
+        create: Créer
+        edit: Modifier
+        remove: Supprimer
+        remove_and_list: Supprimer <small>et retour à la liste</small>
+        unlink: Retirer
+        move_up: Remonter
+        move_descendre: Descendre
+        cancel: Annuler
+        save: Enregistrer
+        save_and_list: Enregistrer <small>et retour à la liste</small>
+        execute: Exécuter
+        apply: Appliquer
+        send: Envoyer
+        download: Télécharger
+        import: Importer
+        export: Exporter
+    field:
+        name: Nom
+        title: Titre
+        subtitle: Sous-Titre
+        parent: Parent
+        root: Racine
+        category: Catégorie
+        brand: Marque
+        type: Type
+        status: État
+        url: Url
+        ip_address: Adresse IP
+        website: Site internet
+        email: Email
+        email_address: Adresse email
+        subject: Sujet
+        message: Message
+        pricing: Tarifs
+        price: Prix
+        promotion: Promotion
+        tax: Taxe
+        rate: Taux
+        rating: Note
+        weight: Poids
+        size: Taille
+        color: Couleur
+        code: Code
+        value: Valeur
+        quantity: Quantité
+        option: Option
+        options: Options
+        description: Description
+        designation: Désignation
+        reference: Référence
+        number: Numéro
+        content: Contenu
+        translations: Traductions
+        summary: Résumé
+        logo: Logo
+        image: Image
+        images: Images
+        photo: Photo
+        photos: Photos
+        media: Média
+        medias: Médias
+        icon: Icône
+        video: Vidéo
+        videos: Vidéos
+        date: Date
+        from_date: Du
+        to_date: Au
+        start_date: Date de début
+        end_date: Date de fin
+        created_at: Date de création
+        updated_at: Date de modification
+        published_at: Date de publication
+        expires_at: Date d'expiration
+        started_at: Démarré le
+        completed_at: Terminé le
+        private: Privé
+        enabled: Actif
+        disabled: Inactif
+        validated: Validé
+        locked: Vérrouillé
+        expired: Expiré
+        duration: Durée
+        feed: Flux
+        format: Format
+        charset: Jeu de caractères
+        document: Document
+        file: Fichier
+        rename: Renommer
+        choose_file: Choisissez un fichier
+        unlink: Supprimer l'association avec ce fichier
+        import: Import
+        export: Export
+        path: Chemin
+        alt: Alt
+        seo: Référencement
+        keywords: Mots clés
+        priority: Priorité
+        changefreq: Fréq. de modif.
+        follow: Suivre les liens
+        canonical_url: Url canonique
+        index: Indexer
+        route: Route
+        tag: Tag
+        tags: Tags
+        parameters: Paramètres
+        attributes: Attributs
+        key: Clé
+        value: Valeur
+        login: Identifiant
+        password: Mot de passe
+        verify: Vérification
+        remember_me: Se souvenir de moi
+        username: Nom d'utilisateur
+        author: Auteur
+        user: Utilisateur
+        group: Groupe
+        roles: Roles
+        company: Entreprise
+        identity: Identité
+        gender: Civilité
+        first_name: Prénom
+        last_name: Nom
+        address: Adresse
+        street: Rue
+        supplement: Complément
+        postal_code: Code postal
+        city: Ville
+        province: Département
+        state: Région
+        country: Pays
+        locale: Langue
+        phone: Téléphone
+        mobile: Mobile
+        general: Général
+        informations: Informations
+        coordinates: Coordonnées
+        config: Configuration
+    message:
+        captcha: Veuillez recopier le code de l'image
+        remove_confirm: Êtes-vous sûr de vouloir supprimer cet élément ?
+    changefreq:
+        hourly: Toutes les heures 
+        monthly: Tous les mois
+        yearly: Tous les ans
+    auth:
+        allowed_to_switch: Authorisé à switcher
+        admin: Administrateur
+    error:
+        operation_failed: L'application a rencontré une erreur. Veuillez nous excuser pour la gène occasionnée.
+    image:
+        new: Nouvelle image
+            
