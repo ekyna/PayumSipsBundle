@@ -1,0 +1,22 @@
+{% extends 'EkynaCoreBundle:Form:form_div_layout.html.twig' %}
+
+{% block ekyna_order_order_item_widget %}
+{% spaceless %}
+    {{ form_errors(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_row(form.designation) }}
+            {{ form_row(form.reference) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.price) }}
+            {{ form_row(form.weight) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.tax) }}
+            {{ form_row(form.quantity) }}
+        </div>
+    </div>
+    {{ form_rest(form) }}
+{% endspaceless %}
+{% endblock ekyna_order_order_item_widget %}

@@ -1,0 +1,94 @@
+ekyna_order:
+    order:
+        label:
+            singular: Commande
+            plural: Commandes
+        header:
+            list: Commandes <small>Liste des commandes</small>
+            show: Détail de la commande<small>%number%</small>
+            new: Créer une nouvelle commande
+            edit: Modifier la commande <small>%number%</small>
+            remove: Supprimer la commande <small>%number%</small>
+        button:
+            list: Liste des commandes
+            show: Détail de la commande
+            new: Nouvelle commande
+            edit: Modifier la commande
+            remove: Supprimer la commande
+        field:
+            customer: Client
+            addresses: Addresses
+            invoice_address: Addresse de facturation
+            delivery_address: Addresse de livraison
+            same_address: Même adresse
+            invoice: Facture
+            invoice_pdf: Facture PDF
+            no_shipment: Sans livraison
+            details: Détails
+            net_unit: Prix Unit. HT
+            net_total: Total HT
+            ati_total: Total TTC
+            weight_total: Poids total
+            document_footer: Pied de page des documents
+            state: Statut
+            payment_state: Statut paiement
+            shipment_state: Statut livraison
+        alert:
+            no_item: Aucune commande configuré
+        state:
+            new: Nouveau
+            pending: En attente
+            refused: Refusée
+            accepted: Acceptée
+            completed: Complétée
+            refunded: Remboursée
+            cancelled: Annulée
+        type:
+            cart: Panier
+            order: Commande
+            quote: Devis
+        message:
+            already_paid: La commande est déjà réglée en totalité
+            has_payment_cant_deleted: Cette commande a des paiements et ne peut être supprimée.
+            has_shipment_cant_deleted: Cette commande a des livraisons et ne peut être supprimée.
+    payment:
+        label:
+            singular: Paiement
+            plural: Paiements
+        header:
+            new: Créer un nouveau paiement
+            edit: Modifier le paiement
+            remove: Supprimer le paiement
+        button:
+            new: Nouveau paiement
+            edit: Modifier le paiement
+            remove: Supprimer le paiement
+        message:
+            remove_confirm: Souhaitez-vous réellement supprimer ce paiement ?
+    tax:
+        label:
+            singular: Taxe
+            plural: Taxes
+        header:
+            list: Taxes <small>Liste des taxes</small>
+            show: Détail de la taxe<small>%name%</small>
+            new: Créer une nouvelle taxe
+            edit: Modifier la taxe <small>%name%</small>
+            remove: Supprimer la taxe <small>%name%</small>
+        button:
+            list: Liste des taxes
+            show: Détail de la taxe
+            new: Nouvelle taxe
+            edit: Modifier la taxe
+            remove: Supprimer la taxe
+        alert:
+            no_item: Aucune tax configuré
+    event:
+        locked: La commande est verrouillée et ne peut être modifiée.
+    view:
+        designation: Désignation
+        unit_net_price: Prix unit. HT # TODO nbsp twig filter
+        quantity: Quantité
+        total_net_price: Total HT
+        net_sub_total: Sous-total HT
+        ati_total: Total TTC
