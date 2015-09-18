@@ -7,8 +7,8 @@ ekyna_demo:
 ekyna_advertisement:
     resource: "@EkynaAdvertisementBundle/Resources/config/routing.yml"
 
-ekyna_contact:
-    resource: "@EkynaContactBundle/Resources/config/routing.yml"
+#ekyna_contact:
+#    resource: "@EkynaContactBundle/Resources/config/routing.yml"
 
 ekyna_news:
     resource: "@EkynaNewsBundle/Resources/config/routing.yml"
@@ -49,8 +49,8 @@ ekyna_cart:
 ekyna_order:
     resource: "@EkynaOrderBundle/Resources/config/routing.yml"
 
-ekyna_locality:
-    resource: "@EkynaLocalityBundle/Resources/config/routing.yml"
+#ekyna_locality:
+#    resource: "@EkynaLocalityBundle/Resources/config/routing.yml"
 
 ekyna_user:
     resource: "@EkynaUserBundle/Resources/config/routing.yml"
