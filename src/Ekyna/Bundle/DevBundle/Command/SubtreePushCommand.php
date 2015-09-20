@@ -6,6 +6,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\Process;
 
 /**
  * Class SubtreePushCommand
@@ -22,7 +23,7 @@ class SubtreePushCommand extends AbstractSubtreeCommand
         $this
             ->setName('git:subtree:push')
             ->setDescription('Git subtree helper.')
-            ->addArgument('package', InputArgument::OPTIONAL, 'The package name.')
+            ->addArgument('packages', InputArgument::IS_ARRAY | InputArgument::OPTIONAL, 'The packages names.')
             ->addOption('branch', 'b', InputOption::VALUE_REQUIRED, 'The branch name.')
             ->setHelp(<<<EOT
 The <info>git:subtree:push</info> pushes to the subtrees.
@@ -38,14 +39,11 @@ EOT
     {
         $this->loadPackages();
 
-        $package = $input->getArgument('package');
-        if ($package) {
-            $package = $this->getPackage($package);
-        }
+        $packages = (array) $input->getArgument('packages');
 
         $branch = $input->getOption('branch');
         if ($branch) {
-            if (!preg_match('~^[0-9]\.[0-9]{1,2}(\.[0-9]{1,3})$~', $branch)) {
+            if (!preg_match('~^[0-9]\.[0-9]{1,2}(\.[0-9]{1,3})?$~', $branch)) {
                 throw new \InvalidArgumentException("Invalid branch '{$branch}'.");
             }
         } else {
@@ -55,21 +53,18 @@ EOT
         /** @var \Symfony\Component\Console\Helper\DialogHelper $dialog */
         $dialog = $this->getHelperSet()->get('dialog');
 
-        // Single package
-        if ($package) {
-            $output->writeln("Pushing <info>{$package['name']}</info> on branch <info>{$branch}</info>");
-            if ($dialog->askConfirmation($output, 'Do you want to continue ?', false)) {
-                $this->push($output, $package, $branch);
-            }
-            return;
+        if (empty($packages)) {
+            $packages = array_keys($this->getPackages());
+            $packagesNames = 'all packages';
+        } else {
+            $packagesNames = implode(', ', array_map(function($package) {
+                return $this->getPackage($package)['name'];
+            }, $packages));
         }
 
-        // All packages
-        $output->writeln("Pushing <info>all packages</info> on branch <info>{$branch}</info> ...");
+        $output->writeln("Pushing <info>{$packagesNames}</info> on branch <info>{$branch}</info>");
         if ($dialog->askConfirmation($output, 'Do you want to continue ?', false)) {
-            foreach ($this->getPackages() as $package) {
-                $this->push($output, $package, $branch);
-            }
+            $this->push($output, $packages, $branch);
         }
     }
 
@@ -77,28 +72,31 @@ EOT
      * Runs the git push command for the given package and branch.
      *
      * @param OutputInterface $output
-     * @param array $package
+     * @param array $packages
      * @param string $branch
      */
-    protected function push(OutputInterface $output, array $package, $branch)
+    protected function push(OutputInterface $output, array $packages, $branch)
     {
-        $cmd = sprintf(
-            'git subtree push --prefix=%s --squash %s %s',
-            $package['prefix'],
-            $package['alias'],
-            $branch
-        );
+        foreach ($packages as $package) {
+            $config = $this->getPackage($package);
+            $cmd = sprintf(
+                'git subtree push --prefix=%s --squash %s %s',
+                $config['prefix'],
+                $config['alias'],
+                $branch
+            );
 
-        $output->writeln($cmd);
-        $output->write(str_pad(' - ' . $package['name'], 50, '.', STR_PAD_RIGHT));
+            //$output->writeln($cmd);
+            $output->write(str_pad(' - ' . $config['name'], 50, '.', STR_PAD_RIGHT));
 
-        $success = true;
-        // TODO $process = new Process();
+            $process = new Process($cmd);
+            $process->run();
 
-        if ($success) {
-            $output->writeln(' <info>success</info>');
-        } else {
-            $output->writeln(' <error>failure</error>');
+            if ($process->isSuccessful()) {
+                $output->writeln(' <info>success</info>');
+            } else {
+                $output->writeln(' <error>failure</error>');
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ assetic:
             bin: /usr/bin/jpegoptim
             strip_all: true
         less:
-            node: nodejs
+            node: "%node_path%"
             node_paths: [/usr/local/lib/node_modules]
             apply_to: "\.less$"
         yui_css:
