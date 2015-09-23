@@ -29,7 +29,7 @@
         "stof/doctrine-extensions-bundle": "1.1.*",
         "a2lix/translation-form-bundle" : "2.0.*",
 
-        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "friendsofsymfony/user-bundle": "v2.0.0-alpha1",
         "friendsofsymfony/elastica-bundle": "3.1.*",
         "friendsofsymfony/http-cache-bundle": "~1.0",
         "friendsofsymfony/jsrouting-bundle": "~1.5",
