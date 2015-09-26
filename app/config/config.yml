@@ -116,7 +116,7 @@ jms_i18n_routing:
     strategy: prefix_except_default
     cookie:
         enabled: false
-    #exclusion_pattern: "^/(admin|api|filemanager)/" # TODO
+    exclusion_pattern: "^/(admin|api)/" # TODO
     routers:
         - "router.default"
         - "ekyna_cms.router"
