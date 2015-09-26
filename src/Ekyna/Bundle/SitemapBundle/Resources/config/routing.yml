@@ -4,6 +4,7 @@ ekyna_sitemap_index:
         _controller: "EkynaSitemapBundle:Sitemap:index"
     requirements:
         _method: GET
+    options: { i18n: false }
 
 ekyna_sitemap_sitemap:
     pattern: /sitemaps/{sitemap}.xml
@@ -12,3 +13,4 @@ ekyna_sitemap_sitemap:
     requirements:
         _method: GET
         group: "[a-z-]+"
+    options: { i18n: false }
