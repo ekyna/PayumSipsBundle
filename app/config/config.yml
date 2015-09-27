@@ -99,16 +99,6 @@ knp_snappy:
     image:
         enabled: false
 
-#jms_translation:
-#    configs:
-#        app:
-#            dirs: [%kernel.root_dir%, %kernel.root_dir%/../src]
-#            output_dir: %kernel.root_dir%/Resources/translations
-#            #ignored_domains: [routes]
-#            excluded_names: ["*TestCase.php", "*Test.php"]
-#            excluded_dirs: [cache, data, logs]
-#            #extractors: [jms_i18n_routing]
-
 # JMS I18n Routing
 jms_i18n_routing:
     default_locale: %locale%
