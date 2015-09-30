@@ -13,6 +13,7 @@
             </constraint>
         </property>
         <property name="color">
+            <constraint name="NotBlank" />
             <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
         </property>
         <property name="html">
