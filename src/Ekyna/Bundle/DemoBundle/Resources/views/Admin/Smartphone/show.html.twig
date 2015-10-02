@@ -59,16 +59,7 @@
                 {{ render_characteristics(smartphone.characteristics, {'highlight_inherited': true}) }}
             </div>
             <div class="tab-pane" id="prod-smartphone-seo">
-                {{ show_row(smartphone.seo.title, 'text', 'ekyna_core.field.title') }}
-                {{ show_row(smartphone.seo.description, 'text', 'ekyna_core.field.description') }}
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ show_row(smartphone.seo.changefreq, 'text', 'ekyna_core.field.changefreq', {'label_nb_col': 4}) }}
-                    </div>
-                    <div class="col-md-6">
-                        {{ show_row(smartphone.seo.priority, 'text', 'ekyna_core.field.priority', {'label_nb_col': 4}) }}
-                    </div>
-                </div>
+                {{ show_row(smartphone.seo, 'seo') }}
             </div>
         </div>
     </div>
