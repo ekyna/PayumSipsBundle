@@ -1,7 +1,0 @@
-config:
-    shim:
-        'ekyna-table':
-            deps: ['jquery']
-            exports: 'EkynaTable'
-    paths:
-        'ekyna-table': 'bundles/ekynatable/js/table'

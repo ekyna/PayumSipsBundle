@@ -1,3 +1,0 @@
-ekyna_advertisement_advert_admin:
-    resource: "admin/advert.yml"
-    prefix:   /adverts

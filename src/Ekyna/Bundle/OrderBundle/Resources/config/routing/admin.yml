@@ -1,7 +1,0 @@
-ekyna_order_order_admin:
-    resource: "admin/order.yml"
-    prefix:   /orders
-
-ekyna_order_tax_admin:
-    resource: "admin/tax.yml"
-    prefix:   /taxes

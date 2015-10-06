@@ -1,7 +1,0 @@
-ekyna_setting_api_helper_fetch:
-    path: /fetch
-    defaults: { _controller: "EkynaSettingBundle:Helper:fetch" }
-    requirements:
-        _method: GET
-    options:
-        expose: true

@@ -1,7 +1,10 @@
-sf.dev
-======
+PayumSipsBundle
+===
 
-### TODO 
+Payum SIPS support.
 
-* Symfony 2.7
-* Validator 2.5 api
+## Installation
+TODO
+
+## Configuration
+TODO

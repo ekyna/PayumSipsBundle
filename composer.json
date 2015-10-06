@@ -1,138 +1,37 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "license": "MIT",
-    "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
-    "autoload": {
-        "psr-0": { "": "src/", "SymfonyStandard": "app/" }
-    },
-    "require": {
-        "php": ">=5.4.0",
-        "symfony/symfony": "2.5.*",
-        "symfony/assetic-bundle": "~2.3",
-        "symfony/swiftmailer-bundle": "~2.3",
-        "symfony/monolog-bundle": "~2.4",
-        "symfony-cmf/routing": "1.3.*",
-        "sensio/distribution-bundle": "~3.0,>=3.0.12",
-        "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
-        "twig/extensions": "~1.0",
-
-        "incenteev/composer-parameter-handler": "~2.0",
-
-        "doctrine/common" : "~2.4,<2.5",
-        "doctrine/orm": "~2.2,>=2.2.3,<2.5",
-        "doctrine/doctrine-bundle": "1.3.*",
-        "doctrine/doctrine-cache-bundle": "1.0.*",
-        "doctrine/migrations": "dev-master",
-        "doctrine/doctrine-migrations-bundle": "dev-master",
-
-        "stof/doctrine-extensions-bundle": "1.1.*",
-        "a2lix/translation-form-bundle" : "2.0.*",
-
-        "friendsofsymfony/user-bundle": "v2.0.0-alpha1",
-        "friendsofsymfony/elastica-bundle": "3.1.*",
-        "friendsofsymfony/http-cache-bundle": "~1.0",
-        "friendsofsymfony/jsrouting-bundle": "~1.5",
-
-        "knplabs/knp-menu": "v2.0.1",
-        "knplabs/knp-menu-bundle": "v2.0.0",
-        "knplabs/knp-snappy-bundle": "~1.2",
-
-        "liip/imagine-bundle": "1.2.*",
-        "oneup/flysystem-bundle": "~1.1",
-        "oneup/uploader-bundle": "~1.3",
-
-        "jms/serializer-bundle": "0.*",
-        "jms/twig-js": "1.0.*",
-        "jms/twig-js-bundle": "1.0.*",
-        "jms/i18n-routing-bundle": "dev-symfony-cmf",
-
-        "white-october/pagerfanta-bundle": "1.0.*",
-        "braincrafted/bootstrap-bundle": "2.1.*",
-        "stfalcon/tinymce-bundle": "dev-master",
-
-        "payum/payum": "0.15.*",
-        "payum/payum-bundle": "0.15.*",
-
-        "h4cc/wkhtmltopdf-amd64": "0.12.x",
-        "winzou/state-machine-bundle": "~0.2",
-        "craue/formflow-bundle": "~2.1",
-        "misd/phone-number-bundle": "~1.0",
-        "ob/highcharts-bundle" : "~1.2",
-        "gregwar/captcha-bundle": "~1.0",
-        "google/apiclient": "1.*",
-        "egeloen/google-map-bundle": "2.2.*",
-
-        "fortawesome/font-awesome" : "*",
-        "components/jquery": "~2.1",
-        "components/jqueryui": "~1.11",
-        "components/bootstrap": "3.3.5",
-        "cwspear/bootstrap-hover-dropdown": "2.1.3",
-        "cross-solution/bootstrap3-dialog": "dev-composer",
-        "malsup/form": "3.*",
-        "eonasdan/bootstrap-datetimepicker" : "4.7.*"
-    },
-    "require-dev": {
-        "sensio/generator-bundle": "2.3.*",
-        "doctrine/doctrine-fixtures-bundle": "2.2.*",
-        "hautelook/alice-bundle": "~0.2",
-        "behat/behat": "~3.0.6",
-        "phpunit/phpunit": "~4.0.7"
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "SymfonyStandard\\Composer::hookRootPackageInstall"
-        ],
-        "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Ekyna\\Bundle\\FontAwesomeBundle\\Composer\\ScriptHandler::install"
-        ],
-        "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
-            "Ekyna\\Bundle\\FontAwesomeBundle\\Composer\\ScriptHandler::install"
-        ]
-    },
-    "repositories": [
+    "name" : "ekyna/payum-sips-bundle",
+    "description" : "Payum SIPS supports",
+    "type" : "symfony-bundle",
+    "authors" : [
         {
-            "type": "git",
-            "url": "https://github.com/ekyna/TinymceBundle.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/ekyna/JMSI18nRoutingBundle.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/ekyna/bootstrap3-dialog.git"
+            "name" : "Etienne Dauvergne",
+            "homepage" : "http://ekyna.com"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "config": {
-        "bin-dir": "bin",
-        "optimize-autoloader" : true,
-        "component-dir": "web/assets",
-        "component-baseurl": "/assets"
+    "keywords" : [
+        "symfony2",
+        "payum",
+        "sips",
+        "bundle"
+    ],
+    "homepage" : "https://github.com/ekyna/PayumSipsBundle",
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+        "php" : ">=5.4",
+        "symfony/framework-bundle" : "~2.3",
+        "payum/payum": "0.15.*",
+        "payum/payum-bundle": "0.15.*"
     },
-    "extra": {
-        "symfony-app-dir": "app",
-        "symfony-web-dir": "web",
-        "symfony-assets-install": "symlink",
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        },
-        "branch-alias": {
-            "dev-master": "0.4.x-dev"
+    "autoload" : {
+        "psr-4" : {
+            "Ekyna\\Bundle\\PayumSipsBundle\\" : ""
+        }
+    },
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "0.3.x-dev"
         }
     }
 }

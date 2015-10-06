@@ -1,3 +1,0 @@
-ekyna_blog_admin:
-    resource: "routing/admin.yml"
-    prefix:   /admin/blog

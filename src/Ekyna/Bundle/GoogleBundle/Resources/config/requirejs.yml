@@ -1,6 +1,0 @@
-config:
-    shim:
-        'ekyna-form/google-coordinate':
-            deps: ['jquery']
-    paths:
-        'ekyna-form/google-coordinate': 'bundles/ekynagoogle/js/form-coordinate'

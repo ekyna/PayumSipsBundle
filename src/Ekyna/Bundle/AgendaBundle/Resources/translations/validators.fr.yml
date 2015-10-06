@@ -1,4 +1,0 @@
-ekyna_agenda:
-    event:
-        unique: Un évènement portant ce nom éxiste déjà.
-        invalid_date_range: La date de fin doit être postérieure à la date de début.

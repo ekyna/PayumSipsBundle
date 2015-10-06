@@ -1,7 +1,0 @@
-ekyna_user_admin:
-    resource: "routing/admin.yml"
-    prefix:   /admin/user
-
-ekyna_user_account:
-    resource: .
-    type: account

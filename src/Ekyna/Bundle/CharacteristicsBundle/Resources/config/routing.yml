@@ -1,3 +1,0 @@
-ekyna_characteristics_admin:
-    resource: "routing/admin.yml"
-    prefix:   /admin/setting
