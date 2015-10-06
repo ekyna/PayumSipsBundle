@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Ekyna\Bundle\CartBundle\EkynaCartBundle(),
             new Ekyna\Bundle\OrderBundle\EkynaOrderBundle(),
             new Ekyna\Bundle\PaymentBundle\EkynaPaymentBundle(),
+//            new Ekyna\Bundle\PayumSipsBundle\EkynaPayumSipsBundle(),
             new Ekyna\Bundle\ShipmentBundle\EkynaShipmentBundle(),
             new Ekyna\Bundle\ProductBundle\EkynaProductBundle(),
             new Ekyna\Bundle\BlogBundle\EkynaBlogBundle(),

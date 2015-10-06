@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6a0445de0d5654b363114e176611cb80",
-    "content-hash": "192f5ff024407262632db6168559fb30",
+    "hash": "2591012364f1a824c0ac10a07cae96d7",
+    "content-hash": "be53a9e9a897ac9dacc669a7f21fb70a",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -1072,7 +1072,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/238aaa5fa04b5755a9957715e269d542cd0f8e39",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/93ec729e3f2f1bb882904cce9d2c1dde6f139ec8",
                 "reference": "238aaa5fa04b5755a9957715e269d542cd0f8e39",
                 "shasum": ""
             },
@@ -1251,7 +1251,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/6c527d8ccbccec5257bb2c92bca973653b1e3976",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/d196ddc229f50c66c5a015c158adb78a2dfb4351",
                 "reference": "6f40d16de7a4da2fff883f2de92fdbf17e61d75d",
                 "shasum": ""
             },
@@ -1944,7 +1944,7 @@
                     "homepage": "https://github.com/friendsofsymfony/FOSJsRoutingBundle/contributors"
                 },
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -3142,7 +3142,7 @@
                     "email": "stof@notk.org"
                 },
                 {
-                    "name": "Knplabs",
+                    "name": "KnpLabs",
                     "homepage": "http://knplabs.com"
                 },
                 {
@@ -4311,27 +4311,92 @@
             "time": "2013-03-06 13:21:44"
         },
         {
-            "name": "payum/payum",
-            "version": "0.14.6",
+            "name": "payum/iso4217",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Payum/Payum.git",
-                "reference": "214dafce85a53bf065987fe401da9eb719f9c82b"
+                "url": "https://github.com/Payum/iso4217.git",
+                "reference": "265c01a8c228f3c75b053353328769780a0a3321"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Payum/zipball/214dafce85a53bf065987fe401da9eb719f9c82b",
-                "reference": "214dafce85a53bf065987fe401da9eb719f9c82b",
+                "url": "https://api.github.com/repos/Payum/iso4217/zipball/265c01a8c228f3c75b053353328769780a0a3321",
+                "reference": "265c01a8c228f3c75b053353328769780a0a3321",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Payum\\ISO4217\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/Payum/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "ISO 4217 PHP Library",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "4217",
+                "ISO 4217",
+                "currencies",
+                "iso",
+                "library"
+            ],
+            "time": "2015-04-14 17:23:40"
+        },
+        {
+            "name": "payum/payum",
+            "version": "0.15.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/Payum.git",
+                "reference": "666e0fc4ff21c2679d6c96cbf4f6008823eef5de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/Payum/zipball/666e0fc4ff21c2679d6c96cbf4f6008823eef5de",
+                "reference": "666e0fc4ff21c2679d6c96cbf4f6008823eef5de",
                 "shasum": ""
             },
             "require": {
                 "ajbdev/authorizenet-php-api": "1.1.*",
                 "ext-soap": "*",
                 "fp/klarna-invoice": "0.1.*",
-                "klarna/checkout": "~1",
+                "klarna/checkout": "~1|~2.0",
                 "kriswallsmith/buzz": "~0.13",
                 "league/url": "~3.0",
                 "paypal/rest-api-sdk-php": "0.5.*",
+                "payum/iso4217": "~1.0",
                 "php": ">=5.3.2",
                 "stripe/stripe-php": "~1.0",
                 "twig/twig": "~1.0"
@@ -4381,7 +4446,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.14-dev"
+                    "dev-master": "0.15-dev"
                 }
             },
             "autoload": {
@@ -4407,7 +4472,7 @@
                     "homepage": "http://payum.org/"
                 }
             ],
-            "description": "Domain friendly payment framework. Paypal, payex, authorize.net, be2bill, recurring payments, instant notifications and many more",
+            "description": "Payum offers everything you need to work with payments. From simplest use cases to very advanced ones.",
             "homepage": "http://payum.org",
             "keywords": [
                 "authorize.net",
@@ -4427,24 +4492,24 @@
                 "stripe checkout",
                 "stripe.js"
             ],
-            "time": "2015-06-10 07:07:05"
+            "time": "2015-09-29 06:56:04"
         },
         {
             "name": "payum/payum-bundle",
-            "version": "0.14.4",
+            "version": "0.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PayumBundle.git",
-                "reference": "8be4ec0d2fe760e63e2c82a84a34ebc9a27b3e8a"
+                "reference": "86b3334a293d216d9b069a9775254281c05cfe1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/8be4ec0d2fe760e63e2c82a84a34ebc9a27b3e8a",
-                "reference": "8be4ec0d2fe760e63e2c82a84a34ebc9a27b3e8a",
+                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/86b3334a293d216d9b069a9775254281c05cfe1f",
+                "reference": "86b3334a293d216d9b069a9775254281c05cfe1f",
                 "shasum": ""
             },
             "require": {
-                "payum/core": "0.14.*",
+                "payum/core": "0.15.*",
                 "php": ">=5.3.2",
                 "symfony/form": "~2.3",
                 "symfony/framework-bundle": "~2.3",
@@ -4456,9 +4521,9 @@
                 "omnipay/dummy": "~2.0",
                 "omnipay/paypal": "~2.0",
                 "omnipay/stripe": "~2.0",
-                "payum/jms-payment-bridge": "0.14.*",
-                "payum/omnipay-bridge": "0.14.*",
-                "payum/payum": "0.14.*",
+                "payum/jms-payment-bridge": "0.15.*",
+                "payum/omnipay-bridge": "0.15.*",
+                "payum/payum": "0.15.*",
                 "phpunit/phpunit": "~4.0",
                 "sonata-project/admin-bundle": "~2.0",
                 "symfony/browser-kit": "~2.3",
@@ -4472,7 +4537,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.14-dev"
+                    "dev-master": "0.15-dev"
                 }
             },
             "autoload": {
@@ -4518,7 +4583,7 @@
                 "stripe.js",
                 "symfony"
             ],
-            "time": "2015-04-17 12:36:52"
+            "time": "2015-04-28 19:35:22"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -5244,12 +5309,12 @@
             "version": "v2.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/AsseticBundle.git",
+                "url": "https://github.com/symfony/assetic-bundle.git",
                 "reference": "3ae5c8ca3079b6e0033cc9fbfb6500e2bc964da5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/3ae5c8ca3079b6e0033cc9fbfb6500e2bc964da5",
+                "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/3ae5c8ca3079b6e0033cc9fbfb6500e2bc964da5",
                 "reference": "3ae5c8ca3079b6e0033cc9fbfb6500e2bc964da5",
                 "shasum": ""
             },
@@ -5314,12 +5379,12 @@
             "version": "v2.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/MonologBundle.git",
+                "url": "https://github.com/symfony/monolog-bundle.git",
                 "reference": "9320b6863404c70ebe111e9040dab96f251de7ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
+                "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/9320b6863404c70ebe111e9040dab96f251de7ac",
                 "reference": "9320b6863404c70ebe111e9040dab96f251de7ac",
                 "shasum": ""
             },
@@ -5373,12 +5438,12 @@
             "version": "v2.3.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/SwiftmailerBundle.git",
+                "url": "https://github.com/symfony/swiftmailer-bundle.git",
                 "reference": "970b13d01871207e81d17b17ddda025e7e21e797"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/970b13d01871207e81d17b17ddda025e7e21e797",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/970b13d01871207e81d17b17ddda025e7e21e797",
                 "reference": "970b13d01871207e81d17b17ddda025e7e21e797",
                 "shasum": ""
             },

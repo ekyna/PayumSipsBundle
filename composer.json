@@ -51,8 +51,8 @@
         "braincrafted/bootstrap-bundle": "2.1.*",
         "stfalcon/tinymce-bundle": "dev-master",
 
-        "payum/payum": "0.14.*",
-        "payum/payum-bundle": "0.14.*",
+        "payum/payum": "0.15.*",
+        "payum/payum-bundle": "0.15.*",
 
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "winzou/state-machine-bundle": "~0.2",
