@@ -3,10 +3,5 @@ Sale component
 
 Interface and Traits for sales management.
 
-## Instation / Configuration
+## Installation / Configuration
 TODO
-
-## Creating a TableType
-TODO
-
-## TODOs
