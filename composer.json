@@ -21,8 +21,8 @@
     "require" : {
         "php" : ">=5.4",
         "symfony/framework-bundle" : "~2.3",
-        "payum/payum": "0.15.*",
-        "payum/payum-bundle": "0.15.*"
+        "payum/payum-bundle": "0.15.*",
+        "ekyna/payum-sips": "0.15.*"
     },
     "autoload" : {
         "psr-4" : {
