@@ -20,11 +20,19 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
 
-        $this->addClientSection($treeBuilder->root('ekyna_payum_sips'));
+        $root = $treeBuilder->root('ekyna_payum_sips');
+
+        $this->addClientSection($root);
+        $this->addPathfileSection($root);
 
         return $treeBuilder;
     }
 
+    /**
+     * Adds the client configuration section.
+     *
+     * @param ArrayNodeDefinition $node
+     */
     public function addClientSection(ArrayNodeDefinition $node)
     {
         $node
@@ -36,7 +44,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('merchant_country')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('pathfile')
                             ->cannotBeEmpty()
-                            ->defaultValue('%kernel.root_dir%/sips/param/pathfile')
+                            ->defaultValue('%kernel.cache_dir%'.DIRECTORY_SEPARATOR.'ekyna_payum_sips'.DIRECTORY_SEPARATOR.'pathfile')
                         ->end()
                         ->scalarNode('request_bin')
                             ->cannotBeEmpty()
@@ -46,7 +54,51 @@ class Configuration implements ConfigurationInterface
                             ->cannotBeEmpty()
                             ->defaultValue('%kernel.root_dir%/sips/bin/static/response')
                         ->end()
-                        ->booleanNode('debug')->defaultValue('%kernel.debug%')->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    /**
+     * Adds the pathfile configuration section.
+     *
+     * @param ArrayNodeDefinition $node
+     */
+    public function addPathfileSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('pathfile')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('debug')
+                            ->defaultValue('%kernel.debug%')
+                        ->end()
+                        ->scalarNode('d_logo')
+                            ->defaultValue('bundles/ekynapayumsips/img')
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('f_default')
+                            ->defaultValue('sips/param/parmcom.scellius')
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('f_param')
+                            ->defaultValue('sips/param/parmcom')
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('f_certificate')
+                            ->defaultValue('sips/param/certif')
+                            ->cannotBeEmpty()
+                        ->end()
+                        ->scalarNode('f_ctype')
+                            ->defaultValue('php')
+                            ->cannotBeEmpty()
+                            ->validate()
+                            ->ifNotInArray(array('php', 'asp'))
+                                ->thenInvalid('Invalid f_ctype "%s"')
+                            ->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end()

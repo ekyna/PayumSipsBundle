@@ -21,7 +21,8 @@ class EkynaPayumSipsExtension extends Extension
     {
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        $container->setParameter('ekyna_payum_sips.client.config', $config['client']);
+        $container->setParameter('ekyna_payum_sips.client_config', $config['client']);
+        $container->setParameter('ekyna_payum_sips.pathfile_config', $config['pathfile']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');

@@ -13,8 +13,16 @@
 
         <!-- Client -->
         <service id="ekyna_payum_sips.client" class="%ekyna_payum_sips.client.class%">
-            <argument>%ekyna_payum_sips.client.config%</argument>
+            <argument>%ekyna_payum_sips.client_config%</argument>
             <argument type="service" id="logger" />
+        </service>
+
+        <!-- Cache warmer -->
+        <service id="ekyna_payum_sips.cache_warmer.pathfile" class="Ekyna\Bundle\PayumSipsBundle\CacheWarmer\PathFileCacheWarmer">
+            <argument>%ekyna_payum_sips.pathfile_config%</argument>
+            <argument>%ekyna_payum_sips.client_config%</argument>
+            <argument>%kernel.root_dir%</argument>
+            <tag name="kernel.cache_warmer" />
         </service>
 
     </services>
