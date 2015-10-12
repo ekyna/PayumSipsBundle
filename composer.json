@@ -28,10 +28,5 @@
         "psr-4" : {
             "Ekyna\\Bundle\\PayumSipsBundle\\" : ""
         }
-    },
-    "extra" : {
-        "branch-alias" : {
-            "dev-master" : "0.15.x-dev"
-        }
     }
 }
