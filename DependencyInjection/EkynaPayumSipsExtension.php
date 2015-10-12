@@ -19,9 +19,11 @@ class EkynaPayumSipsExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $container->setParameter(
-            'payum.sips.api_default_config',
-            $this->processConfiguration(new Configuration(), $configs)
-        );
+        $config = $this->processConfiguration(new Configuration(), $configs);
+
+        $container->setParameter('ekyna_payum_sips.client.config', $config['client']);
+
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.xml');
     }
 }

@@ -8,6 +8,7 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Parameter;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Class SipsGatewayFactory
@@ -31,33 +32,13 @@ class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtens
     {
         parent::addConfiguration($builder);
 
+        $configuration = new Configuration();
+        $configuration->addClientSection($builder);
+
+        // Options configuration
         $builder
             ->children()
-                ->arrayNode('config')
-                    ->children()
-                        ->scalarNode('merchant_id')->isRequired()->cannotBeEmpty()->end()
-                        ->scalarNode('merchant_country')->isRequired()->cannotBeEmpty()->end()
-                        ->scalarNode('pathfile')
-                            ->cannotBeEmpty()
-                            ->defaultValue('%kernel.root_dir%/config/sips/param/pathfile')
-                        ->end()
-                        ->booleanNode('debug')->defaultValue('%kernel.debug%')->end()
-                    ->end()
-                ->end()
-                ->arrayNode('bin')
-                    ->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('request_path')
-                            ->cannotBeEmpty()
-                            ->defaultValue('%kernel.root_dir%/config/sips/bin/static/request')
-                        ->end()
-                        ->scalarNode('response_path')
-                            ->cannotBeEmpty()
-                            ->defaultValue('%kernel.root_dir%/config/sips/bin/static/response')
-                        ->end()
-                    ->end()
-                ->end()
-                ->scalarNode('default_language')->cannotBeEmpty()->defaultValue('fr')->end()
+                ->scalarNode('language')->defaultValue('fr')->cannotBeEmpty()->end()
             ->end();
     }
 
@@ -92,7 +73,7 @@ class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtens
         $config = parent::createFactoryConfig();
 
         $config['payum.template.authorize'] = new Parameter('payum.sips.template.authorize');
-        $config['payum.api_default_config'] = new Parameter('payum.sips.api_default_config');
+        $config['payum.client']             = new Reference('ekyna_payum_sips.client');
 
         return $config;
     }
