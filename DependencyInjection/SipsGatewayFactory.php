@@ -34,12 +34,7 @@ class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtens
 
         $configuration = new Configuration();
         $configuration->addClientSection($builder);
-
-        // Options configuration
-        $builder
-            ->children()
-                ->scalarNode('language')->defaultValue('fr')->cannotBeEmpty()->end()
-            ->end();
+        $configuration->addApiSection($builder);
     }
 
     /**
@@ -62,7 +57,7 @@ class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtens
     {
         parent::load($container);
 
-        $container->setParameter('payum.sips.template.authorize', '@PayumSips/Action/authorize.html.twig');
+        $container->setParameter('payum.sips.template.capture', '@PayumSips/Action/capture.html.twig');
     }
 
     /**
@@ -72,8 +67,9 @@ class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtens
     {
         $config = parent::createFactoryConfig();
 
-        $config['payum.template.authorize'] = new Parameter('payum.sips.template.authorize');
-        $config['payum.client']             = new Reference('ekyna_payum_sips.client');
+        $config['payum.template.capture'] = new Parameter('payum.sips.template.capture');
+        $config['payum.api_config']       = new Parameter('ekyna_payum_sips.api_config');
+        $config['payum.client']           = new Reference('ekyna_payum_sips.client');
 
         return $config;
     }
