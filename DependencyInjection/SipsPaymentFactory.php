@@ -2,7 +2,7 @@
 
 namespace Ekyna\Bundle\PayumSipsBundle\DependencyInjection;
 
-use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Gateway\AbstractGatewayFactory;
+use Payum\Bundle\PayumBundle\DependencyInjection\Factory\Payment\AbstractPaymentFactory;
 use Payum\Core\Bridge\Twig\TwigFactory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -11,11 +11,11 @@ use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class SipsGatewayFactory
+ * Class SipsPaymentFactory
  * @package Ekyna\Bundle\PayumSipsBundle\DependencyInjection
  * @author Étienne Dauvergne <contact@ekyna.com>
  */
-class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtensionInterface
+class SipsPaymentFactory extends AbstractPaymentFactory implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
@@ -44,8 +44,8 @@ class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtens
     {
         $container->prependExtensionConfig('twig', array(
             'paths' => array_flip(array_filter(array(
-                'PayumCore' => TwigFactory::guessViewsPath('Payum\Core\Gateway'),
-                'PayumSips' => TwigFactory::guessViewsPath('Ekyna\Component\Payum\Sips\SipsGatewayFactory'),
+                'PayumCore' => TwigFactory::guessViewsPath('Payum\Core\Payment'),
+                'PayumSips' => TwigFactory::guessViewsPath('Ekyna\Component\Payum\Sips\SipsPaymentFactory'),
             )))
         ));
     }
@@ -77,9 +77,9 @@ class SipsGatewayFactory extends AbstractGatewayFactory implements PrependExtens
     /**
      * {@inheritDoc}
      */
-    protected function getPayumGatewayFactoryClass()
+    protected function getPayumPaymentFactoryClass()
     {
-        return 'Ekyna\Component\Payum\Sips\SipsGatewayFactory';
+        return 'Ekyna\Component\Payum\Sips\SipsPaymentFactory';
     }
 
     /**

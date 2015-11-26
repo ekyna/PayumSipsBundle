@@ -2,7 +2,7 @@
 
 namespace Ekyna\Bundle\PayumSipsBundle;
 
-use Ekyna\Bundle\PayumSipsBundle\DependencyInjection\SipsGatewayFactory;
+use Ekyna\Bundle\PayumSipsBundle\DependencyInjection\SipsPaymentFactory;
 use Payum\Bundle\PayumBundle\DependencyInjection\PayumExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -24,6 +24,6 @@ class EkynaPayumSipsBundle extends Bundle
         /** @var $extension PayumExtension */
         $extension = $container->getExtension('payum');
 
-        $extension->addGatewayFactory(new SipsGatewayFactory());
+        $extension->addPaymentFactory(new SipsPaymentFactory());
     }
 }
