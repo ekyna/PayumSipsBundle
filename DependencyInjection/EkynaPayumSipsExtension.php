@@ -2,12 +2,8 @@
 
 namespace Ekyna\Bundle\PayumSipsBundle\DependencyInjection;
 
-use Ekyna\Component\Payum\Sips\SipsGatewayFactory;
-use Payum\Core\GatewayFactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\Parameter;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
